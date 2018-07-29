@@ -6,23 +6,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<AnchorPane fx:controller="sample.addPartViewController" prefHeight="500.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="15.0" layoutY="23.0" prefHeight="59.0" prefWidth="159.0" text="Add Part">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <RadioButton layoutX="150.0" layoutY="95.0" mnemonicParsing="false" text="In-House">
+      <RadioButton fx:id="inHouse" layoutX="150.0" layoutY="95.0" mnemonicParsing="false" text="In-House">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="346.0" layoutY="96.0" mnemonicParsing="false" text="Outsourced">
+      <RadioButton fx:id="outSourced" layoutX="346.0" layoutY="96.0" mnemonicParsing="false" text="Outsourced">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
+      <!--Need to add id field lable-->
       <Label layoutX="137.0" layoutY="140.0" prefHeight="25.0" prefWidth="45.0" text="Name">
          <font>
             <Font size="15.0" />
@@ -48,12 +50,15 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <TextArea layoutX="304.0" layoutY="140.0" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea layoutX="304.0" layoutY="195.0" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea layoutX="304.0" layoutY="250.0" prefHeight="25.0" prefWidth="176.0" />
-      <TextArea layoutX="176.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
-      <TextArea layoutX="340.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
-      <Button layoutX="339.0" layoutY="360.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="90.0" text="Save" />
-      <Button layoutX="491.0" layoutY="360.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="108.0" text="Cancel" />
+      <!--Need to add ID field-->
+      <TextField fx:id="addPartName" layoutX="304.0" layoutY="140.0" prefHeight="25.0" prefWidth="176.0" />
+      <TextField fx:id="addPartInv" layoutX="304.0" layoutY="195.0" prefHeight="25.0" prefWidth="176.0" />
+      <TextField fx:id="addPartPrice" layoutX="304.0" layoutY="250.0" prefHeight="25.0" prefWidth="176.0" />
+      <TextField fx:id="addPartMin" layoutX="176.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
+      <TextField fx:id="addPartMax" layoutX="340.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
+
+
+      <Button onAction="#addPartSave" layoutX="339.0" layoutY="360.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="90.0" text="Save" />
+      <Button onAction="#addPartCancel" layoutX="491.0" layoutY="360.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="108.0" text="Cancel" />
    </children>
 </AnchorPane>
