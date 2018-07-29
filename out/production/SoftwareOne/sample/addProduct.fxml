@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller ="sample.AddProductController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="74.0" layoutY="93.0" text="Add Product">
          <font>
@@ -18,16 +18,23 @@
       <Label layoutX="74.0" layoutY="300.0" text="Inv" />
       <Label layoutX="74.0" layoutY="350.0" text="Price" />
       <Label layoutX="74.0" layoutY="400.0" text="Max" />
-      <Button layoutX="608.0" layoutY="97.0" mnemonicParsing="false" text="Search" />
-      <TextField layoutX="766.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" />
 
-      <TextField layoutX="147.0" layoutY="200.0" prefHeight="25.0" prefWidth="300" />
+       <TextField layoutX="147.0" layoutY="200.0" prefHeight="25.0" prefWidth="300" />
        <TextField layoutX="147.0" layoutY="250.0" prefHeight="25.0" prefWidth="300" />
        <TextField layoutX="147.0" layoutY="300.0" prefHeight="25.0" prefWidth="149.0" />
        <TextField layoutX="147.0" layoutY="350.0" prefHeight="25.0" prefWidth="149.0" />
+
+       <!-- Min Max -->
        <TextField layoutX="147.0" layoutY="400.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="325.0" layoutY="400.0" text="Min" />
-      <TextField layoutX="410.0" layoutY="400.0" prefHeight="25.0" prefWidth="149.0" />
+       <TextField layoutX="410.0" layoutY="400.0" prefHeight="25.0" prefWidth="149.0" />
+
+       <Label layoutX="325.0" layoutY="400.0" text="Min" />
+
+       <!-- Search Area -->
+       <TextField layoutX="766.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" />
+      <Button onAction="#searchAddProduct" layoutX="608.0" layoutY="97.0" mnemonicParsing="false" text="Search" />
+
+       <!-- Top Table -->
       <TableView layoutX="611.0" layoutY="185.0" prefHeight="200.0" prefWidth="600.0">
         <columns>
           <TableColumn prefWidth="150.0" text="Part ID" />
@@ -36,10 +43,13 @@
             <TableColumn prefWidth="150.0" text="Price Per Unit" />
         </columns>
       </TableView>
-      <Button layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="1131.0" layoutY="661.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="940.0" layoutY="719.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="1060.0" layoutY="719.0" mnemonicParsing="false" text="Cancel" />
+
+      <Button onAction="#addProduct" layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
+      <Button onAction="#deleteProduct" layoutX="1131.0" layoutY="661.0" mnemonicParsing="false" text="Delete" />
+      <Button onAction="#saveProduct" layoutX="940.0" layoutY="719.0" mnemonicParsing="false" text="Save" />
+      <Button onAction="#cancelProduct" layoutX="1060.0" layoutY="719.0" mnemonicParsing="false" text="Cancel" />
+
+       <!-- Second Table-->
       <TableView layoutX="611.0" layoutY="451.0" prefHeight="200.0" prefWidth="600.0">
          <columns>
             <TableColumn prefWidth="150.0" text="Part ID" />
