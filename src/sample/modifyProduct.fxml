@@ -6,8 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="sample.ModifyProductController" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <!--Search section-->
+      <Button onAction="#modifyProductSearch" layoutX="618.0" layoutY="107.0" mnemonicParsing="false" text="Search" />
+      <TextField fx:id="modifyProductSearchInput" layoutX="776.0" layoutY="107.0" prefHeight="30.0" prefWidth="200.0" />
+
+      <!--Top Table-->
       <TableView layoutX="621.0" layoutY="461.0" prefHeight="200.0" prefWidth="600.0">
          <columns>
             <TableColumn prefWidth="150.0" text="Part ID" />
@@ -16,10 +21,8 @@
             <TableColumn prefWidth="150.0" text="Price Per Unit" />
          </columns>
       </TableView>
-      <Button layoutX="1070.0" layoutY="729.0" mnemonicParsing="false" text="Cancel" />
-      <Button layoutX="950.0" layoutY="729.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="1095.0" layoutY="670.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="1120.0" layoutY="402.0" mnemonicParsing="false" text="Add" />
+
+      <!--Botton Table-->
       <TableView layoutX="621.0" layoutY="195.0" prefHeight="200.0" prefWidth="600.0">
          <columns>
             <TableColumn prefWidth="150.0" text="Part ID" />
@@ -28,24 +31,34 @@
             <TableColumn prefWidth="150.0" text="Price Per Unit" />
          </columns>
       </TableView>
-      <TextField layoutX="420.0" layoutY="410.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="335.0" layoutY="410.0" text="Min" />
-      <TextField layoutX="157.0" layoutY="410.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="157.0" layoutY="360.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="157.0" layoutY="310.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField layoutX="157.0" layoutY="260.0" prefHeight="25.0" prefWidth="300" />
-      <TextField layoutX="157.0" layoutY="210.0" prefHeight="25.0" prefWidth="300" />
-      <TextField layoutX="776.0" layoutY="107.0" prefHeight="30.0" prefWidth="200.0" />
-      <Button layoutX="618.0" layoutY="107.0" mnemonicParsing="false" text="Search" />
+
+      <!--Input Labels-->
       <Label layoutX="84.0" layoutY="410.0" text="Max" />
       <Label layoutX="84.0" layoutY="360.0" text="Price" />
       <Label layoutX="84.0" layoutY="310.0" text="Inv" />
       <Label layoutX="84.0" layoutY="260.0" text="Name" />
       <Label layoutX="84.0" layoutY="210.0" text="ID" />
-      <Label layoutX="84.0" layoutY="103.0" text="Modify Product">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Label>
+      <Label layoutX="84.0" layoutY="103.0" text="Modify Product"/>
+
+      <!--Product Input Field-->
+      <TextField layoutX="420.0" layoutY="410.0" prefHeight="25.0" prefWidth="149.0" />
+      <Label layoutX="335.0" layoutY="410.0" text="Min" />
+
+
+
+      <TextField layoutX="157.0" layoutY="410.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField layoutX="157.0" layoutY="360.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField layoutX="157.0" layoutY="310.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField layoutX="157.0" layoutY="260.0" prefHeight="25.0" prefWidth="300" />
+      <TextField layoutX="157.0" layoutY="210.0" prefHeight="25.0" prefWidth="300" />
+
+      <Button onAction="#modifyProductCancel" layoutX="1070.0" layoutY="729.0" mnemonicParsing="false" text="Cancel" />
+      <Button onAction="#modifyProductSave" layoutX="950.0" layoutY="729.0" mnemonicParsing="false" text="Save" />
+      <Button onAction="#modifyProductDelete" layoutX="1095.0" layoutY="670.0" mnemonicParsing="false" text="Delete" />
+      <Button onAction="#modifyProductAdd" layoutX="1120.0" layoutY="402.0" mnemonicParsing="false" text="Add" />
+
+
+
+
    </children>
 </AnchorPane>
