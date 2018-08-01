@@ -5,14 +5,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import sample.Inventory;
 
 public class Main extends Application {
 
-
+    public Inventory inventory;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("modifyProduct.fxml"));
+
+        //instantiating the Inventory Class
+        inventory = new Inventory();
+
+        //Loading the Main View
+        Parent root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
         primaryStage.setTitle("Dan Burke | Software One");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
