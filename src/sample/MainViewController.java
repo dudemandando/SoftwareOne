@@ -39,25 +39,31 @@ public class MainViewController implements Initializable {
         System.out.println("Part Add Main Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("addPart.fxml"));
         rootPane.getChildren().setAll(pane);
-
     }
 
     @FXML
-    protected void productAddMain(ActionEvent event){
+    protected void productAddMain(ActionEvent event) throws IOException{
 
         System.out.println("Product Add Main Clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("addProduct.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
-    protected void partModifyMain(ActionEvent event){
+    protected void partModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Part Modify Main Clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("modifyPart.fxml"));
+        rootPane.getChildren().setAll(pane);
+
     }
 
     @FXML
-    protected void productModifyMain(ActionEvent event){
+    protected void productModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Product Modify Main Clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("modifyProduct.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
