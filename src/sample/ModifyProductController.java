@@ -2,12 +2,16 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -25,6 +29,9 @@ public class ModifyProductController implements Initializable {
     @FXML  private TextField modifyProductCompanyName;
 
     @FXML private TextField modifyProductSearchInput;
+
+    @FXML
+    private AnchorPane rootPane;
 
 
     @FXML
@@ -49,8 +56,12 @@ public class ModifyProductController implements Initializable {
 
 
     @FXML
-    public void modifyProductCancel(){
+    public void modifyProductCancel() throws IOException {
+
         System.out.println("Modify product Cancel Clicked");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
+
     }
 
     @Override

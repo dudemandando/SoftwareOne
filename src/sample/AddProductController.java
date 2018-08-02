@@ -2,13 +2,17 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Cell;
 import javafx.scene.control.Button;
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.scene.layout.AnchorPane;
 import sample.Part;
 
 public class AddProductController implements Initializable {
@@ -22,19 +26,13 @@ public class AddProductController implements Initializable {
     @FXML private TextField addProductMin;
     @FXML private TextField addProductMax;
 
+    @FXML
+    private AnchorPane rootPane;
 
     @FXML
     protected void addProduct(ActionEvent event){
         System.out.println("add Product button -- " + addProductID.getText());
-        partToAdd = new Part(
-                addProductName.toString(),
-                Double.parseDouble(addProductPrice.toString()),
-                Integer.parseInt(addProductInv.toString()),
-                Integer.parseInt(addProductMin.toString()),
-                Integer.parseInt(addProductMax.toString())
-        );
 
-        //Add Funcionality to Add part to inventory instance in Main.java
 
     }
 
@@ -51,9 +49,11 @@ public class AddProductController implements Initializable {
     }
 
     @FXML
-    protected void cancelProduct(ActionEvent event){
+    protected void cancelProduct(ActionEvent event) throws IOException {
 
-        System.out.println("cancel product");
+        System.out.println("cancel add product");
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
