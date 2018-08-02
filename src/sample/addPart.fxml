@@ -14,12 +14,12 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <RadioButton fx:id="inHouse" layoutX="150.0" layoutY="95.0" mnemonicParsing="false" text="In-House">
+      <RadioButton fx:id="inHouse" onAction="#inHouseDial" layoutX="150.0" layoutY="95.0" mnemonicParsing="false" text="In-House">
          <font>
             <Font size="15.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="outSourced" layoutX="346.0" layoutY="96.0" mnemonicParsing="false" text="Outsourced">
+      <RadioButton fx:id="outSourced" onAction="#outSourceDial" layoutX="346.0" layoutY="96.0" mnemonicParsing="false" text="Outsourced">
          <font>
             <Font size="15.0" />
          </font>
