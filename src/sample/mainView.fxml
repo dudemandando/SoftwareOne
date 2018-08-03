@@ -25,7 +25,7 @@
       <Button onAction="#partSearchMain" layoutX="187.0" layoutY="134.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="103.0" text="Search"/>
       <TextField fx:id="partSearchInputText" layoutX="315.0" layoutY="134.0" prefHeight="51.0" prefWidth="236.0" />
 
-      <TableView layoutX="51.0" layoutY="197.0" prefHeight="435.0" prefWidth="500.0">
+      <TableView fx:id="partTable" layoutX="51.0" layoutY="197.0" prefHeight="435.0" prefWidth="500.0">
         <columns>
           <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Part Id" />
           <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Part Name" />
@@ -45,10 +45,10 @@
       </Label>
       <Button onAction="#productSearchMain" layoutX="861.0" layoutY="134.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="103.0" text="Search" />
       <TextField fx:id="productSearchInputText" layoutX="989.0" layoutY="134.0" prefHeight="51.0" prefWidth="236.0" />
-      <TableView layoutX="725.0" layoutY="197.0" prefHeight="435.0" prefWidth="500.0">
+      <TableView fx:id="productTable" layoutX="725.0" layoutY="197.0" prefHeight="435.0" prefWidth="500.0">
          <columns>
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Part Id" />
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Part Name" />
+            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Id" />
+            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Name" />
             <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Inventory Level" />
             <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Price/Cost Per Unit" />
          </columns>

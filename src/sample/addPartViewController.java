@@ -13,11 +13,14 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import sample.Inventory;
 import sample.Part;
+
 
 
 public class addPartViewController implements Initializable {
 
+    private Main main;
     private Part partToAdd;
     private boolean isOutSourced;
     private ToggleGroup group;
@@ -39,15 +42,18 @@ public class addPartViewController implements Initializable {
     @FXML
     public void addPartSave(ActionEvent event){
 
-        System.out.println("Add part Save Button Clicked --" + addPartName.getText());
+        System.out.println("Add part Save Button Clicked --" );
 
-        partToAdd = new Part(
-                addPartName.toString(),
-                Double.parseDouble(addPartPrice.toString()),
-                Integer.parseInt(addPartInv.toString()),
-                Integer.parseInt(addPartMin.toString()),
-                Integer.parseInt(addPartMax.toString())
-        );
+            partToAdd = new Part(
+                    addPartName.toString(),
+                    Double.parseDouble(addPartPrice.getText()),
+                    Integer.parseInt(addPartInv.getText()),
+                    Integer.parseInt(addPartMin.getText()),
+                    Integer.parseInt(addPartMax.getText())
+            );
+
+        Inventory.addPart(partToAdd);
+
     }
 
     @FXML

@@ -1,18 +1,21 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 public class Inventory {
-    private ArrayList<Product> products;
-    private ArrayList<Part> allParts;
+    private static ObservableList<Product> products = FXCollections.observableArrayList();
+    private static ObservableList<Part> allParts = FXCollections.observableArrayList();
 
     public Inventory() {
-        this.products = new ArrayList<>();
-        this.allParts = new ArrayList<>();
+
+
     }
 
-    public void addProduct(Product item){
-        this.products.add(item);
+    public static void addProduct(Product item){
+        products.add(item);
     }
 
     public boolean removeProduct(int idx){
@@ -24,8 +27,10 @@ public class Inventory {
         }
     }
 
-    public void addPart(Part item){
-        this.allParts.add(item);
+    public static void addPart(Part item){
+
+        allParts.add(item);
+        System.out.println(allParts.size());
     }
 
     public boolean deletePart(int idx){
@@ -35,14 +40,17 @@ public class Inventory {
         }catch(Exception e){
             return false;
         }
+
     }
 
     public Product lookupProduct(int idx){
-        return this.products.get(idx);
+
+        return products.get(idx);
     }
 
     public Part lookupPart(int idx){
-        return this.allParts.get(idx);
+
+        return allParts.get(idx);
     }
 
     public void updateProduct(int idx, Product updatedProduct){
@@ -50,6 +58,7 @@ public class Inventory {
     }
 
     public void updatePart(int idx, Part updatedPart){
+
         allParts.set(idx, updatedPart);
     }
 

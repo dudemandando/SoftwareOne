@@ -1,13 +1,16 @@
 package sample;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.fxml.FXMLLoader;
 
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
@@ -15,14 +18,17 @@ import java.util.ResourceBundle;
 
 public class MainViewController implements Initializable {
 
-    @FXML
-    private AnchorPane rootPane;
+    @FXML private AnchorPane rootPane;
+    @FXML private TableView partTable;
+    @FXML private TableView productTable;
 
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
 
-    @FXML
-    protected void partSearchMain(ActionEvent event){
+    private ObservableList<Part> partList;
+
+
+    @FXML protected void partSearchMain(ActionEvent event){
 
         System.out.println("Part Search Main Clicked --" + partSearchInputText.getText());
     }
@@ -81,6 +87,13 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
+    }
+
+    @FXML
+    public void InstantiateTables(){
+
+
 
     }
 
