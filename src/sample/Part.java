@@ -6,6 +6,8 @@ public class Part {
     private String name;
     private double price;
     private int inStock;
+    private int min;
+    private int max;
 
     public Part(String name, double price, int inStock, int min, int max) {
         this.name = name;
@@ -63,8 +65,6 @@ public class Part {
         this.max = max;
     }
 
-    private int min;
-    private int max;
 
 
 }

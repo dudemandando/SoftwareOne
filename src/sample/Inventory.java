@@ -62,4 +62,8 @@ public class Inventory {
         allParts.set(idx, updatedPart);
     }
 
+    public static int getPartLength(){
+        return allParts.size();
+    }
+
 }

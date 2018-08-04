@@ -1,11 +1,12 @@
 package sample;
 
-public class Inhouse extends Product {
+public class Inhouse extends Part {
 
     private int machineID;
 
-    public Inhouse(int productID, String name, double price, int inStock, int min, int max, int machineID) {
-        super(productID, name, price, inStock, min, max);
+    public Inhouse(int partID, String name, double price, int inStock, int min, int max, int machineID) {
+        super(name, price, inStock, min, max);
+
         this.machineID = machineID;
     }
 
