@@ -108,6 +108,9 @@ public class addPartController implements Initializable {
         group = new ToggleGroup();
         inHouse.setToggleGroup(group);
         outSourced.setToggleGroup(group);
+        inHouse.setSelected(true);
+        isOutSourced = false;
+        machineOrCompany.setText("Machine ID");
 
     }
 
