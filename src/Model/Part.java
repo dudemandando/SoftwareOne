@@ -27,15 +27,13 @@ public class Part {
     }
 
     private void setPartID(int partID) {
+
         this.partID.set(partID);
     }
 
     public int getPartID() {
-        return partID.get();
-    }
 
-    public SimpleIntegerProperty partIDProperty() {
-        return partID;
+        return partID.get();
     }
 
     public String getName() {

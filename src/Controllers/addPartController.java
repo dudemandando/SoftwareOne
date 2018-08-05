@@ -56,7 +56,7 @@ public class addPartController implements Initializable {
             partToAddOut.setCompanyName(companyOrMachineID.toString());
 
             Inventory.addPart(partToAddOut);
-            //loadMain();
+            loadMain();
 
         }else{
             partToAddIn = new InHouse();
@@ -68,7 +68,7 @@ public class addPartController implements Initializable {
             partToAddIn.setMachineID(Integer.parseInt(companyOrMachineID.getText()));
 
             Inventory.addPart(partToAddIn);
-            //loadMain();
+            loadMain();
         }
 
     }
