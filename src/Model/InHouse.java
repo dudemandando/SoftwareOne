@@ -8,11 +8,11 @@ public class InHouse extends Part {
 
     private SimpleIntegerProperty machineID;
 
-    public InHouse(SimpleStringProperty name, SimpleDoubleProperty price, SimpleIntegerProperty inStock, SimpleIntegerProperty min, SimpleIntegerProperty max, SimpleIntegerProperty machineID) {
-        super(name, price, inStock, min, max);
+    public InHouse() {
+
 
         machineID = new SimpleIntegerProperty();
-        this.machineID = machineID;
+
     }
 
     public int getMachineID() {

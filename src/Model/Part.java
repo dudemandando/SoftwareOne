@@ -13,7 +13,7 @@ public class Part {
     private SimpleIntegerProperty min;
     private SimpleIntegerProperty max;
 
-    public Part(SimpleStringProperty name, SimpleDoubleProperty price, SimpleIntegerProperty inStock, SimpleIntegerProperty min, SimpleIntegerProperty max) {
+    public Part() {
 
         partID = new SimpleIntegerProperty();
         name = new SimpleStringProperty();
@@ -23,11 +23,7 @@ public class Part {
         max = new SimpleIntegerProperty();
 
         this.partID.set(Inventory.getPartLength()+1);
-        this.name = name;
-        this.price = price;
-        this.inStock = inStock;
-        this.min = min;
-        this.max = max;
+
     }
 
     private void setPartID(int partID) {

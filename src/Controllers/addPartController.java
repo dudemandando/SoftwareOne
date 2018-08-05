@@ -1,5 +1,7 @@
 package Controllers;
+import Model.InHouse;
 import Model.Inventory;
+import Model.OutSourced;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,7 @@ public class addPartController implements Initializable {
 
     private Main main;
     private OutSourced partToAddOut;
-    private Inhouse partToAddIn;
+    private InHouse partToAddIn;
     private boolean isOutSourced;
     private ToggleGroup group;
 
@@ -44,27 +46,25 @@ public class addPartController implements Initializable {
         System.out.println("Add part Save Button Clicked --" );
 
         if(isOutSourced == true){
-            partToAddOut = new OutSourced(
-                    addPartName.toString(),
-                    Double.parseDouble(addPartPrice.getText()),
-                    Integer.parseInt(addPartInv.getText()),
-                    Integer.parseInt(addPartMin.getText()),
-                    Integer.parseInt(addPartMax.getText()),
-                    companyOrMachineID.toString());
+            partToAddOut = new OutSourced();
+            partToAddOut.setName(addPartName.toString());
+            partToAddOut.setInStock(Integer.parseInt(addPartInv.getText()));
+            partToAddOut.setPrice(Double.parseDouble(addPartPrice.getText()));
+            partToAddOut.setMax(Integer.parseInt(addPartMax.getText()));
+            partToAddOut.setMin(Integer.parseInt(addPartMin.getText()));
+            partToAddOut.setCompanyName(companyOrMachineID.toString());
 
             Inventory.addPart(partToAddOut);
             loadMain();
 
         }else{
-            partToAddIn = new Inhouse(
-                    Inventory.getPartLength(),
-                    addPartName.toString(),
-                    Double.parseDouble(addPartPrice.getText()),
-                    Integer.parseInt(addPartInv.getText()),
-                    Integer.parseInt(addPartMin.getText()),
-                    Integer.parseInt(addPartMax.getText()),
-                    Integer.parseInt(companyOrMachineID.getText())
-                    );
+            partToAddIn = new InHouse();
+            partToAddIn.setName(addPartName.toString());
+            partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
+            partToAddIn.setPrice(Double.parseDouble(addPartPrice.getText()));
+            partToAddIn.setMax(Integer.parseInt(addPartMax.getText()));
+            partToAddIn.setMin(Integer.parseInt(addPartMin.getText()));
+            partToAddIn.setMachineID(Integer.parseInt(companyOrMachineID.getText()));
 
             Inventory.addPart(partToAddIn);
             loadMain();

@@ -8,11 +8,11 @@ public class OutSourced extends Part {
 
     private SimpleStringProperty companyName;
 
-    public OutSourced(SimpleStringProperty name, SimpleDoubleProperty price, SimpleIntegerProperty inStock, SimpleIntegerProperty min, SimpleIntegerProperty max, SimpleStringProperty companyName) {
-        super(name, price, inStock, min, max);
+    public OutSourced() {
+
 
         companyName = new SimpleStringProperty();
-        this.companyName = companyName;
+
     }
 
     public String getCompanyName() {
