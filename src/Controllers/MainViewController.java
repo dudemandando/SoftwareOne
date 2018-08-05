@@ -31,7 +31,6 @@ public class MainViewController implements Initializable {
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
 
-    private ObservableList<Part> partList;
 
 
     @FXML protected void partSearchMain(ActionEvent event){

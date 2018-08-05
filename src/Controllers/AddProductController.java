@@ -1,21 +1,32 @@
 package Controllers;
 
+import Model.Inventory;
 import Model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-
+import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
 public class AddProductController implements Initializable {
 
     private Part partToAdd;
+
+    @FXML private TableView allPartsTable;
+    @FXML private TableView productPartsTable;
+
+    @FXML private TableColumn<Part,Integer> colAddPartID;
+    @FXML private TableColumn<Part,String> colAddPartName;
+    @FXML private TableColumn<Part,Integer> colAddPartInv;
+    @FXML private TableColumn<Part,Double> colAddPartPrice;
 
     @FXML private TextField addProductID;
     @FXML private TextField addProductName;
@@ -62,6 +73,19 @@ public class AddProductController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        populatePartTable();
 
+    }
+
+    @FXML
+    public void populatePartTable(){
+
+        System.out.println("Populating Parts Table");
+        colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
+        colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+        colAddPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
+        colAddPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+
+       allPartsTable.setItems(Inventory.allParts);
     }
 }
