@@ -2,6 +2,7 @@ package Controllers;
 import Model.InHouse;
 import Model.Inventory;
 import Model.OutSourced;
+import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,7 +56,7 @@ public class addPartController implements Initializable {
             partToAddOut.setCompanyName(companyOrMachineID.toString());
 
             Inventory.addPart(partToAddOut);
-            loadMain();
+            //loadMain();
 
         }else{
             partToAddIn = new InHouse();
@@ -67,7 +68,7 @@ public class addPartController implements Initializable {
             partToAddIn.setMachineID(Integer.parseInt(companyOrMachineID.getText()));
 
             Inventory.addPart(partToAddIn);
-            loadMain();
+            //loadMain();
         }
 
     }
@@ -107,11 +108,13 @@ public class addPartController implements Initializable {
         inHouse.setSelected(true);
         isOutSourced = false;
         machineOrCompany.setText("Machine ID");
+        addPartID.setDisable(true);
 
     }
 
     private void loadMain() throws IOException{
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
         rootPane.getChildren().setAll(pane);
+        addPartID.setText(Integer.toString(Inventory.getPartLength()+1));
     }
 }
