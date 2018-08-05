@@ -8,11 +8,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +34,9 @@ public class MainViewController implements Initializable {
 
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
+
+    @FXML
+    private Button exit;
 
 
 
@@ -87,6 +94,12 @@ public class MainViewController implements Initializable {
     protected void productDeleteMain(ActionEvent event){
 
         System.out.println("Product Delete Main Clicked");
+    }
+
+    @FXML
+    protected void exit(ActionEvent event){
+        Stage stage = (Stage) exit.getScene().getWindow();
+        stage.close();
     }
 
 
