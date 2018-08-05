@@ -1,15 +1,28 @@
 package Model;
 
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 public class Part {
 
-    private int partID;
-    private String name;
-    private double price;
-    private int inStock;
-    private int min;
-    private int max;
+    private SimpleIntegerProperty partID;
+    private SimpleStringProperty name;
+    private SimpleDoubleProperty price;
+    private SimpleIntegerProperty inStock;
+    private SimpleIntegerProperty min;
+    private SimpleIntegerProperty max;
 
-    public Part(String name, double price, int inStock, int min, int max) {
+    public Part(SimpleStringProperty name, SimpleDoubleProperty price, SimpleIntegerProperty inStock, SimpleIntegerProperty min, SimpleIntegerProperty max) {
+
+        partID = new SimpleIntegerProperty();
+        name = new SimpleStringProperty();
+        price = new SimpleDoubleProperty();
+        inStock = new SimpleIntegerProperty();
+        min = new SimpleIntegerProperty();
+        max = new SimpleIntegerProperty();
+
+        this.partID.set(Inventory.getPartLength()+1);
         this.name = name;
         this.price = price;
         this.inStock = inStock;
@@ -17,54 +30,75 @@ public class Part {
         this.max = max;
     }
 
+    private void setPartID(int partID) {
+        this.partID.set(partID);
+    }
+
     public int getPartID() {
+        return partID.get();
+    }
+
+    public SimpleIntegerProperty partIDProperty() {
         return partID;
     }
 
-    public void setPartID(int partID) {
-        this.partID = partID;
+    public String getName() {
+        return name.get();
     }
 
-    public String getName() {
+    public SimpleStringProperty nameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name.set(name);
     }
 
     public double getPrice() {
+        return price.get();
+    }
+
+    public SimpleDoubleProperty priceProperty() {
         return price;
     }
 
     public void setPrice(double price) {
-        this.price = price;
+        this.price.set(price);
     }
 
     public int getInStock() {
+        return inStock.get();
+    }
+
+    public SimpleIntegerProperty inStockProperty() {
         return inStock;
     }
 
     public void setInStock(int inStock) {
-        this.inStock = inStock;
+        this.inStock.set(inStock);
     }
 
     public int getMin() {
+        return min.get();
+    }
+
+    public SimpleIntegerProperty minProperty() {
         return min;
     }
 
     public void setMin(int min) {
-        this.min = min;
+        this.min.set(min);
     }
 
     public int getMax() {
+        return max.get();
+    }
+
+    public SimpleIntegerProperty maxProperty() {
         return max;
     }
 
     public void setMax(int max) {
-        this.max = max;
+        this.max.set(max);
     }
-
-
-
 }

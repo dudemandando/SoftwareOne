@@ -1,7 +1,5 @@
 package Controllers;
-import Model.Inhouse;
 import Model.Inventory;
-import Model.OutSourced;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
