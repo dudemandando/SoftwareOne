@@ -48,7 +48,7 @@ public class addPartController implements Initializable {
 
         if(isOutSourced == true){
             partToAddOut = new OutSourced();
-            partToAddOut.setName(addPartName.toString());
+            partToAddOut.setName(addPartName.getText());
             partToAddOut.setInStock(Integer.parseInt(addPartInv.getText()));
             partToAddOut.setPrice(Double.parseDouble(addPartPrice.getText()));
             partToAddOut.setMax(Integer.parseInt(addPartMax.getText()));
@@ -59,8 +59,9 @@ public class addPartController implements Initializable {
             loadMain();
 
         }else{
+            System.out.println("The Name is: " + addPartName.getText());
             partToAddIn = new InHouse();
-            partToAddIn.setName(addPartName.toString());
+            partToAddIn.setName(addPartName.getText());
             partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
             partToAddIn.setPrice(Double.parseDouble(addPartPrice.getText()));
             partToAddIn.setMax(Integer.parseInt(addPartMax.getText()));
