@@ -1,5 +1,7 @@
 package Controllers;
 
+import Model.InHouse;
+import Model.OutSourced;
 import Model.Part;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +17,8 @@ import java.util.ResourceBundle;
 
 public class ModifyPartViewController implements Initializable{
 
-    private Part partToAdd;
+    private InHouse inPartToModify;
+    private OutSourced outPartToModify;
     private boolean isOutSourced;
     private ToggleGroup group;
 
@@ -35,6 +38,22 @@ public class ModifyPartViewController implements Initializable{
 
     @FXML
     private AnchorPane rootPane;
+
+    public InHouse getInPartToModify() {
+        return inPartToModify;
+    }
+
+    public void setInPartToModify(InHouse inPartToModify) {
+        this.inPartToModify = inPartToModify;
+    }
+
+    public OutSourced getOutPartToModify() {
+        return outPartToModify;
+    }
+
+    public void setOutPartToModify(OutSourced outPartToModify) {
+        this.outPartToModify = outPartToModify;
+    }
 
     @FXML
     public void modifyPartSave(){

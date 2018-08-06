@@ -3,26 +3,30 @@ package Controllers;
 import Model.Inventory;
 import Model.Part;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Model.InHouse;
+import Model.OutSourced;
+
 public class MainViewController implements Initializable {
 
+    private Part modifyPart;
     @FXML private AnchorPane rootPane;
     @FXML private TableView partTable;
     @FXML private TableView productTable;
@@ -71,8 +75,17 @@ public class MainViewController implements Initializable {
     protected void partModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Part Modify Main Clicked");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyPart.fxml"));
-        rootPane.getChildren().setAll(pane);
+        modifyPart = (Part)partTable.getSelectionModel().getSelectedItem();
+        System.out.println(modifyPart.getPartID() + "  " + modifyPart.getName());
+
+        //System.out.println(item);
+
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(Main.class.getResource("../Views/modifyPart.fxml"));
+//        ModifyPartViewController modifyController = new ModifyPartViewController();
+//
+//        AnchorPane pane = loader.load(getClass().getResource("../Views/modifyPart.fxml"));
+//        rootPane.getChildren().setAll(pane);
 
     }
 
@@ -107,6 +120,7 @@ public class MainViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources){
         populatePartTable();
+
     }
 
     @FXML
