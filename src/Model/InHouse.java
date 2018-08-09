@@ -26,4 +26,8 @@ public class InHouse extends Part {
     public void setMachineID(int machineID) {
         this.machineID.set(machineID);
     }
+
+    public String getType(){
+        return "InHouse";
+    }
 }

@@ -86,6 +86,6 @@ public class AddProductController implements Initializable {
         colAddPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colAddPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
 
-       allPartsTable.setItems(Inventory.allParts);
+       allPartsTable.setItems(Inventory.getAllParts());
     }
 }

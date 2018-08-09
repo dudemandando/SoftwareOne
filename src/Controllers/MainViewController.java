@@ -76,16 +76,13 @@ public class MainViewController implements Initializable {
 
         System.out.println("Part Modify Main Clicked");
         modifyPart = (Part)partTable.getSelectionModel().getSelectedItem();
-        System.out.println(modifyPart.getPartID() + "  " + modifyPart.getName());
+        Inventory.setModifyPartIdx(modifyPart.getPartID());
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../Views/modifyPart.fxml"));
+        ModifyPartViewController modifyControl = loader.getController();
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyPart.fxml"));
+        rootPane.getChildren().setAll(pane);
 
-        //System.out.println(item);
-
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(Main.class.getResource("../Views/modifyPart.fxml"));
-//        ModifyPartViewController modifyController = new ModifyPartViewController();
-//
-//        AnchorPane pane = loader.load(getClass().getResource("../Views/modifyPart.fxml"));
-//        rootPane.getChildren().setAll(pane);
 
     }
 
@@ -126,13 +123,12 @@ public class MainViewController implements Initializable {
     @FXML
     public void populatePartTable(){
 
-        System.out.println("Populating Parts Table");
         colpartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         colPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
 
-        partTable.setItems(Inventory.allParts);
+        partTable.setItems(Inventory.getAllParts());
     }
 
 

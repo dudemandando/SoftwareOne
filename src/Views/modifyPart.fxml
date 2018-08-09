@@ -50,11 +50,11 @@
             </font>
         </Label>
         <!--Need to modify ID field-->
-        <TextField fx:id="modifyPartName" layoutX="304.0" layoutY="140.0" prefHeight="25.0" prefWidth="176.0" />
-        <TextField fx:id="modifyPartInv" layoutX="304.0" layoutY="195.0" prefHeight="25.0" prefWidth="176.0" />
-        <TextField fx:id="modifyPartPrice" layoutX="304.0" layoutY="250.0" prefHeight="25.0" prefWidth="176.0" />
-        <TextField fx:id="modifyPartMin" layoutX="176.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
-        <TextField fx:id="modifyPartMax" layoutX="340.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" />
+        <TextField fx:id="modifyPartName" layoutX="304.0" layoutY="140.0" prefHeight="25.0" prefWidth="176.0" text="" />
+        <TextField fx:id="modifyPartInv" layoutX="304.0" layoutY="195.0" prefHeight="25.0" prefWidth="176.0" text="" />
+        <TextField fx:id="modifyPartPrice" layoutX="304.0" layoutY="250.0" prefHeight="25.0" prefWidth="176.0" text="" />
+        <TextField fx:id="modifyPartMin" layoutX="176.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" text="" />
+        <TextField fx:id="modifyPartMax" layoutX="340.0" layoutY="303.0" prefHeight="25.0" prefWidth="111.0" text="" />
 
 
         <Button onAction="#modifyPartSave" layoutX="339.0" layoutY="360.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="90.0" text="Save" />

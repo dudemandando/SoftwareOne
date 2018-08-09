@@ -1,6 +1,7 @@
 package Controllers;
 
 import Model.InHouse;
+import Model.Inventory;
 import Model.OutSourced;
 import Model.Part;
 import javafx.event.ActionEvent;
@@ -11,9 +12,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.DataOutput;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+
 
 public class ModifyPartViewController implements Initializable{
 
@@ -27,12 +31,12 @@ public class ModifyPartViewController implements Initializable{
     @FXML private RadioButton outSourced;
 
     @FXML  private TextField modifypartID;
-    @FXML  private TextField modifypartName;
-    @FXML  private TextField modifypartInv;
-    @FXML  private TextField modifypartPrice;
-    @FXML  private TextField modifypartMax;
-    @FXML  private TextField modifypartMin;
-    @FXML  private TextField modifypartCompanyName;
+    @FXML  private TextField modifyPartName;
+    @FXML  private TextField modifyPartInv;
+    @FXML  private TextField modifyPartPrice;
+    @FXML  private TextField modifyPartMax;
+    @FXML  private TextField modifyPartMin;
+    @FXML  private TextField modifyPartCompanyName;
 
     @FXML private TextField modifypartSearchInput;
 
@@ -88,8 +92,36 @@ public class ModifyPartViewController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+
         group = new ToggleGroup();
         inHouse.setToggleGroup(group);
         outSourced.setToggleGroup(group);
+
+        if (Inventory.findPartByID(Inventory.getModifyPartIdx()).getClass().getName() == "Model.InHouse") {
+           inPartToModify =  (InHouse)Inventory.findPartByID(Inventory.getModifyPartIdx());
+           isOutSourced = false;
+           inHouse.setSelected(true);
+           modifyPartName.setText(inPartToModify.getName());
+           modifyPartInv.setText(Integer.toString(inPartToModify.getInStock()));
+           modifyPartPrice.setText(Double.toString(inPartToModify.getPrice()));
+           modifyPartMax.setText(Integer.toString(inPartToModify.getMax()));
+           modifyPartMin.setText(Integer.toString(inPartToModify.getMin()));
+
+        }else{
+
+            outPartToModify = (OutSourced)Inventory.findPartByID(Inventory.getModifyPartIdx());
+            System.out.println(outPartToModify.getName() + "The name of the part");
+            isOutSourced = true;
+            outSourced.setSelected(true);
+            modifyPartName.setText(outPartToModify.getName());
+            modifyPartInv.setText(Integer.toString(outPartToModify.getInStock()));
+            modifyPartPrice.setText(Double.toString(outPartToModify.getPrice()));
+            modifyPartMax.setText(Integer.toString(outPartToModify.getMax()));
+            modifyPartMin.setText(Integer.toString(outPartToModify.getMin()));
+
+        }
+
+
     }
+
 }

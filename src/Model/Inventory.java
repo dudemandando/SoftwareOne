@@ -4,8 +4,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Inventory {
-    public static ObservableList<Product> products = FXCollections.observableArrayList();
-    public static ObservableList<Part> allParts = FXCollections.observableArrayList();
+    private static ObservableList<Product> products = FXCollections.observableArrayList();
+    private static ObservableList<Part> allParts = FXCollections.observableArrayList();
+
+    public static ObservableList<Part> getAllParts() {
+        return allParts;
+    }
+
+    public static Integer getModifyPartIdx() {
+        return modifyPartIdx;
+    }
+
+    public static void setModifyPartIdx(Integer modifyPartIdx) {
+        Inventory.modifyPartIdx = modifyPartIdx;
+    }
+
+    private static Integer modifyPartIdx;
 
     public Inventory() {
 
@@ -16,7 +30,7 @@ public class Inventory {
         products.add(item);
     }
 
-    public boolean removeProduct(int idx){
+    public static boolean removeProduct(int idx){
         try{
             products.remove(idx);
             return true;
@@ -31,7 +45,7 @@ public class Inventory {
         System.out.println(allParts.size());
     }
 
-    public boolean deletePart(int idx){
+    public static boolean deletePart(int idx){
         try{
             allParts.remove(idx);
             return true;
@@ -41,27 +55,39 @@ public class Inventory {
 
     }
 
-    public Product lookupProduct(int idx){
+    public static Product lookupProduct(int idx){
 
         return products.get(idx);
     }
 
-    public Part lookupPart(int idx){
+    public static Part lookupPart(int idx){
 
         return allParts.get(idx);
     }
 
-    public void updateProduct(int idx, Product updatedProduct){
-       products.set(idx, updatedProduct);
+    public static void updateProduct(int idx, Product updatedProduct){
+
+        products.set(idx, updatedProduct);
     }
 
-    public void updatePart(int idx, Part updatedPart){
+    public static void updatePart(int idx, Part updatedPart){
 
         allParts.set(idx, updatedPart);
     }
 
     public static int getPartLength(){
+
         return allParts.size();
+    }
+
+    public static Part findPartByID(int id){
+
+        for (Part part : allParts) {
+            if (part.getPartID() == id){
+                return part;
+            }
+        }
+        return null;
     }
 
 }

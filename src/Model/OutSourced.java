@@ -26,4 +26,8 @@ public class OutSourced extends Part {
     public void setCompanyName(String companyName) {
         this.companyName.set(companyName);
     }
+
+    public String getType(){
+        return "OutSourced";
+    }
 }

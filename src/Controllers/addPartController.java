@@ -59,7 +59,6 @@ public class addPartController implements Initializable {
             loadMain();
 
         }else{
-            System.out.println("The Name is: " + addPartName.getText());
             partToAddIn = new InHouse();
             partToAddIn.setName(addPartName.getText());
             partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
