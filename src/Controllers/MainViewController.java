@@ -127,7 +127,7 @@ public class MainViewController implements Initializable {
         colPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         colPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
-
+        partTable.refresh();
         partTable.setItems(Inventory.getAllParts());
     }
 

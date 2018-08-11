@@ -4,6 +4,7 @@ import Model.InHouse;
 import Model.Inventory;
 import Model.OutSourced;
 import Model.Part;
+import com.sun.jdi.IntegerType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,7 @@ import java.util.ResourceBundle;
 
 public class ModifyPartViewController implements Initializable{
 
+    private Integer modifyPartId;
     private InHouse inPartToModify;
     private OutSourced outPartToModify;
     private boolean isOutSourced;
@@ -36,7 +38,8 @@ public class ModifyPartViewController implements Initializable{
     @FXML  private TextField modifyPartPrice;
     @FXML  private TextField modifyPartMax;
     @FXML  private TextField modifyPartMin;
-    @FXML  private TextField modifyPartCompanyName;
+    @FXML  private TextField modifyPartCompanyOrMachineID;
+    @FXML private javafx.scene.control.Label machineOrCompany;
 
     @FXML private TextField modifypartSearchInput;
 
@@ -60,15 +63,49 @@ public class ModifyPartViewController implements Initializable{
     }
 
     @FXML
-    public void modifyPartSave(){
-        System.out.println("Modify part save clicked");
+    public void modifyPartSave(ActionEvent event) throws IOException{
+
+
+
+        if(isOutSourced == false){
+            System.out.println("Modify part save clicked -- inhouse");
+            inPartToModify = new InHouse();
+            inPartToModify.setPartID(modifyPartId);
+            inPartToModify.setName(modifyPartName.getText());
+            inPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
+            inPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
+            inPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
+            inPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
+            inPartToModify.setMachineID(Integer.parseInt(modifyPartCompanyOrMachineID.getText()));
+
+
+            Inventory.replacePart(Inventory.getModifyPartIdx(), inPartToModify);
+
+
+        }else{
+            System.out.println("Modify part save clicked -- outsourced");
+            outPartToModify = new OutSourced();
+            outPartToModify.setPartID(modifyPartId);
+            outPartToModify.setName(modifyPartName.getText());
+            outPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
+            outPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
+            outPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
+            outPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
+            outPartToModify.setCompanyName(modifyPartCompanyOrMachineID.getText());
+
+            Inventory.replacePart(Inventory.getModifyPartIdx(), outPartToModify);
+
+        }
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
 
 
 
     @FXML
-    public void modifyPartCancel() throws IOException {
+    public void modifyPartCancel(ActionEvent event) throws IOException {
 
         System.out.println("Modify part Cancel Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
@@ -80,6 +117,7 @@ public class ModifyPartViewController implements Initializable{
 
         isOutSourced = false;
         System.out.println("Set to In house");
+        machineOrCompany.setText("Machine ID");
     }
 
     @FXML
@@ -87,6 +125,7 @@ public class ModifyPartViewController implements Initializable{
 
         isOutSourced = true;
         System.out.println("Set to Outsourced");
+        machineOrCompany.setText("Company Name");
 
     }
 
@@ -101,27 +140,33 @@ public class ModifyPartViewController implements Initializable{
            inPartToModify =  (InHouse)Inventory.findPartByID(Inventory.getModifyPartIdx());
            isOutSourced = false;
            inHouse.setSelected(true);
+           modifyPartId = inPartToModify.getPartID();
            modifyPartName.setText(inPartToModify.getName());
            modifyPartInv.setText(Integer.toString(inPartToModify.getInStock()));
            modifyPartPrice.setText(Double.toString(inPartToModify.getPrice()));
            modifyPartMax.setText(Integer.toString(inPartToModify.getMax()));
            modifyPartMin.setText(Integer.toString(inPartToModify.getMin()));
+           modifyPartCompanyOrMachineID.setText(Integer.toString(inPartToModify.getMachineID()));
+           machineOrCompany.setText("Machine ID");
 
         }else{
 
             outPartToModify = (OutSourced)Inventory.findPartByID(Inventory.getModifyPartIdx());
-            System.out.println(outPartToModify.getName() + "The name of the part");
             isOutSourced = true;
             outSourced.setSelected(true);
+            modifyPartId = outPartToModify.getPartID();
             modifyPartName.setText(outPartToModify.getName());
             modifyPartInv.setText(Integer.toString(outPartToModify.getInStock()));
             modifyPartPrice.setText(Double.toString(outPartToModify.getPrice()));
             modifyPartMax.setText(Integer.toString(outPartToModify.getMax()));
             modifyPartMin.setText(Integer.toString(outPartToModify.getMin()));
+            modifyPartCompanyOrMachineID.setText(outPartToModify.getCompanyName());
+            machineOrCompany.setText("Company Name");
 
         }
-
+        Inventory.getAllParts().remove(Inventory.getModifyPartIdx());
 
     }
+
 
 }

@@ -22,11 +22,9 @@ public class Part {
         min = new SimpleIntegerProperty();
         max = new SimpleIntegerProperty();
 
-        this.partID.set(Inventory.getPartLength()+1);
-
     }
 
-    private void setPartID(int partID) {
+    public void setPartID(int partID) {
 
         this.partID.set(partID);
     }

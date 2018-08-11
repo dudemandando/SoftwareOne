@@ -19,7 +19,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class addPartController implements Initializable {
 
-    private Main main;
+
     private OutSourced partToAddOut;
     private InHouse partToAddIn;
     private boolean isOutSourced;
@@ -44,10 +44,9 @@ public class addPartController implements Initializable {
     @FXML
     public void addPartSave(ActionEvent event) throws IOException{
 
-        System.out.println("Add part Save Button Clicked --" );
-
         if(isOutSourced == true){
             partToAddOut = new OutSourced();
+            partToAddOut.setPartID(Inventory.getPartLength()+1);
             partToAddOut.setName(addPartName.getText());
             partToAddOut.setInStock(Integer.parseInt(addPartInv.getText()));
             partToAddOut.setPrice(Double.parseDouble(addPartPrice.getText()));
@@ -60,6 +59,7 @@ public class addPartController implements Initializable {
 
         }else{
             partToAddIn = new InHouse();
+            partToAddIn.setPartID(Inventory.getPartLength()+1);
             partToAddIn.setName(addPartName.getText());
             partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
             partToAddIn.setPrice(Double.parseDouble(addPartPrice.getText()));

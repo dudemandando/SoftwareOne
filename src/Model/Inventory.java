@@ -90,4 +90,19 @@ public class Inventory {
         return null;
     }
 
+
+    public static void replacePart(Integer idx, Part part){
+        allParts.set(modifyPartIdx-1, part);
+
+
+
+    }
+
+    public static void replaceOutSourcedPart(Integer idx, OutSourced part){
+
+        System.out.println("Replacing Out Sourced Part at idx: " + idx + " | With  part name of: " + part.getName());
+        //allParts[idx] =
+
+    }
+
 }
