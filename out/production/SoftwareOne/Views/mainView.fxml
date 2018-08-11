@@ -47,10 +47,10 @@
       <TextField fx:id="productSearchInputText" layoutX="989.0" layoutY="134.0" prefHeight="51.0" prefWidth="236.0" />
       <TableView fx:id="productTable" layoutX="725.0" layoutY="197.0" prefHeight="435.0" prefWidth="500.0">
          <columns>
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Id" />
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Name" />
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Inventory Level" />
-            <TableColumn maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Price/Cost Per Unit" />
+            <TableColumn fx:id="colProductID" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Id" />
+            <TableColumn fx:id="colProductName" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Product Name" />
+            <TableColumn fx:id="colProductInv" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Inventory Level" />
+            <TableColumn fx:id="colProductPrice" maxWidth="125.0" minWidth="125.0" prefWidth="125.0" text="Price/Cost Per Unit" />
          </columns>
       </TableView>
        <Button onAction="#productAddMain" layoutX="874.0" layoutY="645.0" mnemonicParsing="false" text="Add" />

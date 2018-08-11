@@ -36,6 +36,12 @@ public class MainViewController implements Initializable {
     @FXML private TableColumn<Part,Integer> colPartInv;
     @FXML private TableColumn<Part,Double> colPartPrice;
 
+    @FXML private TableColumn<Part,Integer> colProductID;
+    @FXML private TableColumn<Part,String> colProductName;
+    @FXML private TableColumn<Part,Integer> colProductInv;
+    @FXML private TableColumn<Part,Double> colProductPrice;
+
+
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
 
@@ -116,8 +122,9 @@ public class MainViewController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
-        populatePartTable();
 
+            populatePartTable();
+            populateProductTable();
     }
 
     @FXML
@@ -130,6 +137,19 @@ public class MainViewController implements Initializable {
         partTable.refresh();
         partTable.setItems(Inventory.getAllParts());
     }
+
+    @FXML
+    public void populateProductTable(){
+
+        colProductID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("productID"));
+        colProductName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+        colProductInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
+        colProductPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        productTable.refresh();
+        productTable.setItems(Inventory.getProducts());
+    }
+
+
 
 
 }

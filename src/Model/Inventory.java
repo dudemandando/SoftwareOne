@@ -1,5 +1,6 @@
 package Model;
 
+import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -9,6 +10,9 @@ public class Inventory {
 
     public static ObservableList<Part> getAllParts() {
         return allParts;
+    }
+    public static ObservableList<Product> getProducts(){
+        return products;
     }
 
     public static Integer getModifyPartIdx() {
@@ -80,6 +84,10 @@ public class Inventory {
         return allParts.size();
     }
 
+    public static int getProductLength(){
+        return products.size();
+    }
+
     public static Part findPartByID(int id){
 
         for (Part part : allParts) {
@@ -98,11 +106,5 @@ public class Inventory {
 
     }
 
-    public static void replaceOutSourcedPart(Integer idx, OutSourced part){
-
-        System.out.println("Replacing Out Sourced Part at idx: " + idx + " | With  part name of: " + part.getName());
-        //allParts[idx] =
-
-    }
 
 }

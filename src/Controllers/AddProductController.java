@@ -2,6 +2,7 @@ package Controllers;
 
 import Model.Inventory;
 import Model.Part;
+import Model.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,9 +17,12 @@ import java.util.ResourceBundle;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import javax.swing.*;
+
 public class AddProductController implements Initializable {
 
     private Part partToAdd;
+    private Product productToAdd;
 
     @FXML private TableView allPartsTable;
     @FXML private TableView productPartsTable;
@@ -27,6 +31,12 @@ public class AddProductController implements Initializable {
     @FXML private TableColumn<Part,String> colAddPartName;
     @FXML private TableColumn<Part,Integer> colAddPartInv;
     @FXML private TableColumn<Part,Double> colAddPartPrice;
+
+    @FXML private TableColumn<Part,Integer> colCurrPartID;
+    @FXML private TableColumn<Part,String> colCurrPartName;
+    @FXML private TableColumn<Part,Integer> colCurrPartInv;
+    @FXML private TableColumn<Part,Double> colCurrPartPrice;
+
 
     @FXML private TextField addProductID;
     @FXML private TextField addProductName;
@@ -39,10 +49,28 @@ public class AddProductController implements Initializable {
     private AnchorPane rootPane;
 
     @FXML
-    protected void addProduct(ActionEvent event){
-        System.out.println("add Product button -- " + addProductID.getText());
+    protected void addPart(ActionEvent event){
 
+        partToAdd = (Part)allPartsTable.getSelectionModel().getSelectedItem();
 
+    }
+
+    @FXML
+    protected void saveProduct(ActionEvent event) throws IOException{
+
+        System.out.println("save product button");
+        productToAdd = new Product();
+        productToAdd.setProductID(Inventory.getProductLength()+1);
+        productToAdd.setName(addProductName.getText());
+        productToAdd.setInStock(Integer.parseInt(addProductInv.getText()));
+        productToAdd.setPrice(Double.parseDouble(addProductPrice.getText()));
+        productToAdd.setMax(Integer.parseInt(addProductMax.getText()));
+        productToAdd.setMin(Integer.parseInt(addProductMin.getText()));
+
+        Inventory.addProduct(productToAdd);
+
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
@@ -51,11 +79,7 @@ public class AddProductController implements Initializable {
         System.out.println("delete Product button");
     }
 
-    @FXML
-    protected void saveProduct(ActionEvent event){
 
-        System.out.println("save product button");
-    }
 
     @FXML
     protected void cancelProduct(ActionEvent event) throws IOException {
@@ -73,6 +97,7 @@ public class AddProductController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        addProductID.setDisable(true);
         populatePartTable();
 
     }
@@ -80,12 +105,20 @@ public class AddProductController implements Initializable {
     @FXML
     public void populatePartTable(){
 
-        System.out.println("Populating Parts Table");
+
         colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         colAddPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colAddPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
-
+        allPartsTable.refresh();
        allPartsTable.setItems(Inventory.getAllParts());
+
+        colCurrPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
+        colCurrPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+        colCurrPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
+        colCurrPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        productPartsTable.refresh();
+
+
     }
 }

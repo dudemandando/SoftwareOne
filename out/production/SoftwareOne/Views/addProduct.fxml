@@ -17,7 +17,7 @@
       <Label layoutX="74.0" layoutY="350.0" text="Price" />
       <Label layoutX="74.0" layoutY="400.0" text="Max" />
 
-       <TextField fx:id="addProductID" layoutX="147.0" layoutY="200.0" prefHeight="25.0" prefWidth="300" />
+       <TextField fx:id="addProductID" layoutX="147.0" layoutY="200.0" prefHeight="25.0" prefWidth="300" promptText="Auto Gen Disabled"/>
        <TextField fx:id="addProductName" layoutX="147.0" layoutY="250.0" prefHeight="25.0" prefWidth="300" />
        <TextField fx:id="addProductInv" layoutX="147.0" layoutY="300.0" prefHeight="25.0" prefWidth="149.0" />
        <TextField fx:id="addProductPrice" layoutX="147.0" layoutY="350.0" prefHeight="25.0" prefWidth="149.0" />
@@ -42,7 +42,7 @@
         </columns>
       </TableView>
 
-      <Button onAction="#addProduct" layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
+      <Button onAction="#addPart" layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
       <Button onAction="#deleteProduct" layoutX="1131.0" layoutY="661.0" mnemonicParsing="false" text="Delete" />
       <Button onAction="#saveProduct" layoutX="940.0" layoutY="719.0" mnemonicParsing="false" text="Save" />
       <Button onAction="#cancelProduct" layoutX="1060.0" layoutY="719.0" mnemonicParsing="false" text="Cancel" />
@@ -50,10 +50,10 @@
        <!-- Second Table-->
       <TableView fx:id="productPartsTable" layoutX="611.0" layoutY="451.0" prefHeight="200.0" prefWidth="600.0">
          <columns>
-            <TableColumn  prefWidth="150.0" text="Part ID" />
-            <TableColumn  prefWidth="150.0" text="Part Name" />
-            <TableColumn  prefWidth="150.0" text="Inventory Level" />
-            <TableColumn  prefWidth="150.0" text="Price Per Unit" />
+            <TableColumn fx:id="colCurrPartID"  prefWidth="150.0" text="Part ID" />
+            <TableColumn fx:id="colCurrPartName" prefWidth="150.0" text="Part Name" />
+            <TableColumn fx:id="colCurrPartInv" prefWidth="150.0" text="Inventory Level" />
+            <TableColumn fx:id="colCurrPartPrice" prefWidth="150.0" text="Price Per Unit" />
          </columns>
       </TableView>
    </children>
