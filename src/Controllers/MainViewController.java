@@ -1,7 +1,6 @@
 package Controllers;
 
-import Model.Inventory;
-import Model.Part;
+import Model.*;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableObjectValue;
 import javafx.collections.ObservableList;
@@ -21,12 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Model.InHouse;
-import Model.OutSourced;
-
 public class MainViewController implements Initializable {
 
-    private Part modifyPart;
     @FXML private AnchorPane rootPane;
     @FXML private TableView partTable;
     @FXML private TableView productTable;
@@ -81,8 +76,7 @@ public class MainViewController implements Initializable {
     protected void partModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Part Modify Main Clicked");
-        modifyPart = (Part)partTable.getSelectionModel().getSelectedItem();
-        Inventory.setModifyPartIdx(modifyPart.getPartID());
+        Inventory.setModifyPartIdx(((Part) partTable.getSelectionModel().getSelectedItem()).getPartID());
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../Views/modifyPart.fxml"));
         ModifyPartViewController modifyControl = loader.getController();
@@ -96,6 +90,7 @@ public class MainViewController implements Initializable {
     protected void productModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Product Modify Main Clicked");
+        Inventory.setModifyProductId(((Product) productTable.getSelectionModel().getSelectedItem()).getProductID()) ;
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyProduct.fxml"));
         rootPane.getChildren().setAll(pane);
     }

@@ -8,6 +8,7 @@ public class Inventory {
     private static ObservableList<Product> products = FXCollections.observableArrayList();
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static Integer modifyPartIdx;
+    private static Integer modifyProductId;
 
     public Inventory() {
 
@@ -28,6 +29,15 @@ public class Inventory {
     public static void setModifyPartIdx(Integer modifyPartIdx) {
         Inventory.modifyPartIdx = modifyPartIdx;
     }
+
+    public static void setModifyProductId(Integer id) {
+        Inventory.modifyProductId = id;
+
+    }
+    public static int getModifyProductId(){
+
+        return modifyProductId;
+        }
 
     public static void addProduct(Product item){
         products.add(item);
@@ -114,11 +124,16 @@ public class Inventory {
             }
         }
 
-//        findPartByID(idx);
-//        allParts.set(modifyPartIdx-1, part);
+    }
 
-
-
+    public static Product findProductByID(int id){
+        for (Product product: products){
+            if(product.getProductID() == id){
+                return product;
+            }
+        }
+        System.out.println("returning null product");
+        return null;
     }
 
 

@@ -1,28 +1,45 @@
 package Controllers;
 
+import Model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ModifyProductController implements Initializable {
 
-    @FXML private RadioButton inHouse;
-    @FXML private RadioButton outSourced;
+    private Product productToModify;
 
-    @FXML  private TextField modifyProductID;
-    @FXML  private TextField modifyProductName;
-    @FXML  private TextField modifyProductInv;
-    @FXML  private TextField modifyProductPrice;
-    @FXML  private TextField modifyProductMax;
-    @FXML  private TextField modifyProductMin;
-    @FXML  private TextField modifyProductCompanyName;
+    @FXML private TableView allPartsTable;
+    @FXML private TableView productPartsTable;
+
+    @FXML private TableColumn<Part,Integer> colAddPartID;
+    @FXML private TableColumn<Part,String> colAddPartName;
+    @FXML private TableColumn<Part,Integer> colAddPartInv;
+    @FXML private TableColumn<Part,Double> colAddPartPrice;
+
+    @FXML private TableColumn<Part,Integer> colCurrPartID;
+    @FXML private TableColumn<Part,String> colCurrPartName;
+    @FXML private TableColumn<Part,Integer> colCurrPartInv;
+    @FXML private TableColumn<Part,Double> colCurrPartPrice;
+
+
+    @FXML private TextField addProductID;
+    @FXML private TextField addProductName;
+    @FXML private TextField addProductInv;
+    @FXML private TextField addProductPrice;
+    @FXML private TextField addProductMin;
+    @FXML private TextField addProductMax;
 
     @FXML private TextField modifyProductSearchInput;
 
@@ -52,7 +69,7 @@ public class ModifyProductController implements Initializable {
 
 
     @FXML
-    public void modifyProductCancel() throws IOException {
+    public void modifyProductCancel(ActionEvent event) throws IOException {
 
         System.out.println("Modify product Cancel Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
@@ -62,6 +79,39 @@ public class ModifyProductController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
+        productToModify = new Product();
+        productToModify = Inventory.findProductByID(Inventory.getModifyProductId());
+        populateTextFields(productToModify);
+        populatePartTable();
 
     }
+
+    private void populatePartTable(){
+
+        colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
+        colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+        colAddPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
+        colAddPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        allPartsTable.refresh();
+        allPartsTable.setItems(Inventory.getAllParts());
+
+        colCurrPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
+        colCurrPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
+        colCurrPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
+        colCurrPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
+        productPartsTable.refresh();
+        productPartsTable.setItems(productToModify.getAssociatedParts());
+
+
+    }
+
+    private void populateTextFields(Product prod){
+        addProductID.setDisable(true);
+        addProductName.setText(prod.getName());
+        addProductInv.setText(Integer.toString(prod.getInStock()));
+        addProductPrice.setText(Double.toString(prod.getPrice()));
+        addProductMax.setText(Integer.toString(prod.getMax()));
+        addProductMin.setText(Integer.toString(prod.getMin()));
+    }
+
 }
