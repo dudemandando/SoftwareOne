@@ -1,8 +1,6 @@
 package Controllers;
 
-import Model.Inventory;
-import Model.Part;
-import Model.Product;
+import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,7 +19,8 @@ import javax.swing.*;
 
 public class AddProductController implements Initializable {
 
-    private Part partToAdd;
+    private InHouse inPartToAdd;
+    private OutSourced outPartToAdd;
     private Product productToAdd;
 
     @FXML private TableView allPartsTable;
@@ -50,8 +49,15 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void addPart(ActionEvent event){
+        System.out.println("Adding part to product");
 
-        partToAdd = (Part)allPartsTable.getSelectionModel().getSelectedItem();
+////        System.out.println("Part ID" + Inventory.findPartByID(partToAdd.getPartID()));
+////        productToAdd.addAssociatedInHousePart(partToAdd);
+//        productPartsTable.refresh();
+//        productPartsTable.setItems(productToAdd.getAssociatedParts());
+//        System.out.println("lis tis now " +productToAdd.getAssociatedParts().size());
+
+
 
     }
 
@@ -91,7 +97,6 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void searchAddProduct(ActionEvent event){
-
         System.out.println(" search add product");
     }
 
@@ -105,19 +110,21 @@ public class AddProductController implements Initializable {
     @FXML
     public void populatePartTable(){
 
+        productToAdd = new Product();
 
         colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         colAddPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colAddPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
         allPartsTable.refresh();
-       allPartsTable.setItems(Inventory.getAllParts());
+        allPartsTable.setItems(Inventory.getAllParts());
 
         colCurrPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colCurrPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
         colCurrPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colCurrPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
         productPartsTable.refresh();
+        productPartsTable.setItems(productToAdd.getAssociatedParts());
 
 
     }

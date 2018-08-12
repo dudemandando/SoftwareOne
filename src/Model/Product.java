@@ -196,6 +196,10 @@ public class Product {
 
     }
 
+    public ObservableList<Part> getAssociatedParts() {
+        return associatedParts;
+    }
+
     public int getProductID() {
         return productID.get();
     }
@@ -268,7 +272,8 @@ public class Product {
         this.max.set(max);
     }
 
-    public void addAssociatedPart(Part item){
+    public void addAssociatedInHousePart(Part item){
+
         associatedParts.add(item);
     }
 

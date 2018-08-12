@@ -79,7 +79,7 @@ public class ModifyPartViewController implements Initializable{
             inPartToModify.setMachineID(Integer.parseInt(modifyPartCompanyOrMachineID.getText()));
 
 
-            Inventory.replacePart(Inventory.getModifyPartIdx(), inPartToModify);
+            Inventory.replacePart(inPartToModify);
 
 
         }else{
@@ -93,7 +93,7 @@ public class ModifyPartViewController implements Initializable{
             outPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
             outPartToModify.setCompanyName(modifyPartCompanyOrMachineID.getText());
 
-            Inventory.replacePart(Inventory.getModifyPartIdx(), outPartToModify);
+            Inventory.replacePart(outPartToModify);
 
         }
 

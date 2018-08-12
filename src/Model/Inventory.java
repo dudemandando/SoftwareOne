@@ -91,16 +91,31 @@ public class Inventory {
     public static Part findPartByID(int id){
 
         for (Part part : allParts) {
+            System.out.println(part.getPartID() + "<- part ID | " + id);
             if (part.getPartID() == id){
                 return part;
             }
         }
+        System.out.println("returning null");
         return null;
     }
 
 
-    public static void replacePart(Integer idx, Part part){
-        allParts.set(modifyPartIdx-1, part);
+
+
+    public static void replacePart(Part part){
+
+        int counter = 0;
+        for (Part item : allParts) {
+            if (item.getPartID() == part.getPartID()){
+                allParts.set(counter, part);
+            }else{
+                counter +=1;
+            }
+        }
+
+//        findPartByID(idx);
+//        allParts.set(modifyPartIdx-1, part);
 
 
 
