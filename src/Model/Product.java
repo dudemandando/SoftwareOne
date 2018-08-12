@@ -4,6 +4,7 @@ import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 
@@ -11,7 +12,7 @@ import java.util.*;
 
 public class Product {
 
-    private ObservableList<Part> associatedParts;
+    private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
     private SimpleIntegerProperty productID;
     private SimpleStringProperty name;
     private SimpleDoubleProperty price;
@@ -20,6 +21,18 @@ public class Product {
     private SimpleIntegerProperty max;
 
     public Product() {
+
+        productID = new SimpleIntegerProperty();
+        name = new SimpleStringProperty();
+        price = new SimpleDoubleProperty();
+        inStock = new SimpleIntegerProperty();
+        min = new SimpleIntegerProperty();
+        max = new SimpleIntegerProperty();
+
+
+    }
+
+    public void reInitAssocList(){
         associatedParts = new ObservableList<Part>() {
             @Override
             public void addListener(ListChangeListener<? super Part> listener) {
@@ -186,19 +199,13 @@ public class Product {
 
             }
         };
-        productID = new SimpleIntegerProperty();
-        name = new SimpleStringProperty();
-        price = new SimpleDoubleProperty();
-        inStock = new SimpleIntegerProperty();
-        min = new SimpleIntegerProperty();
-        max = new SimpleIntegerProperty();
-
-
     }
 
-    public ObservableList<Part> getAssociatedParts() {
+
+    public ObservableList<Part> getAssociatedParts(){
         return associatedParts;
     }
+
 
     public int getProductID() {
         return productID.get();
@@ -272,7 +279,7 @@ public class Product {
         this.max.set(max);
     }
 
-    public void addAssociatedInHousePart(Part item){
+    public void addAssociatedPart(Part item){
 
         associatedParts.add(item);
     }

@@ -1,6 +1,10 @@
 package Controllers;
 
 import Model.*;
+import javafx.beans.InvalidationListener;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TableView;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -22,6 +26,7 @@ public class AddProductController implements Initializable {
     private InHouse inPartToAdd;
     private OutSourced outPartToAdd;
     private Product productToAdd;
+    private ObservableList<Part> parts;
 
     @FXML private TableView allPartsTable;
     @FXML private TableView productPartsTable;
@@ -48,17 +53,15 @@ public class AddProductController implements Initializable {
     private AnchorPane rootPane;
 
     @FXML
-    protected void addPart(ActionEvent event){
-        System.out.println("Adding part to product");
-
-////        System.out.println("Part ID" + Inventory.findPartByID(partToAdd.getPartID()));
-////        productToAdd.addAssociatedInHousePart(partToAdd);
-//        productPartsTable.refresh();
-//        productPartsTable.setItems(productToAdd.getAssociatedParts());
-//        System.out.println("lis tis now " +productToAdd.getAssociatedParts().size());
+    protected void addPart(ActionEvent event) throws IOException{
+        System.out.println("Adding part to product ");
+            System.out.println("Added in house");
 
 
-
+            System.out.println(allPartsTable.getSelectionModel().getSelectedItem());
+            parts.add(Inventory.findPartByID(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID()));
+            productToAdd.addAssociatedPart(Inventory.findPartByID(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID()));
+            System.out.println("size is ||" + parts.size());
     }
 
     @FXML
@@ -111,6 +114,9 @@ public class AddProductController implements Initializable {
     public void populatePartTable(){
 
         productToAdd = new Product();
+        inPartToAdd = new InHouse();
+        outPartToAdd = new OutSourced();
+        parts = FXCollections.observableArrayList();
 
         colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));

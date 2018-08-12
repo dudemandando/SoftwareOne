@@ -7,6 +7,12 @@ import javafx.collections.ObservableList;
 public class Inventory {
     private static ObservableList<Product> products = FXCollections.observableArrayList();
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
+    private static Integer modifyPartIdx;
+
+    public Inventory() {
+
+
+    }
 
     public static ObservableList<Part> getAllParts() {
         return allParts;
@@ -21,13 +27,6 @@ public class Inventory {
 
     public static void setModifyPartIdx(Integer modifyPartIdx) {
         Inventory.modifyPartIdx = modifyPartIdx;
-    }
-
-    private static Integer modifyPartIdx;
-
-    public Inventory() {
-
-
     }
 
     public static void addProduct(Product item){
@@ -91,8 +90,9 @@ public class Inventory {
     public static Part findPartByID(int id){
 
         for (Part part : allParts) {
-            System.out.println(part.getPartID() + "<- part ID | " + id);
+
             if (part.getPartID() == id){
+                System.out.println("find Part by ID | part found");
                 return part;
             }
         }
@@ -107,6 +107,7 @@ public class Inventory {
 
         int counter = 0;
         for (Part item : allParts) {
+            System.out.println(part.getPartID() + "<- part ID | ");
             if (item.getPartID() == part.getPartID()){
                 allParts.set(counter, part);
             }else{
