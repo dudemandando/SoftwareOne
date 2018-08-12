@@ -293,5 +293,13 @@ public class Product {
         return associatedParts.get(idx);
     }
 
+    public void removePartWithId(int id){
+        for(int i = 0; i < associatedParts.size(); i ++){
+            if(associatedParts.get(i).getPartID() == id){
+                associatedParts.remove(i);
+            }
+        }
+    }
+
 
 }

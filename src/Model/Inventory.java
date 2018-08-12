@@ -92,7 +92,6 @@ public class Inventory {
         for (Part part : allParts) {
 
             if (part.getPartID() == id){
-                System.out.println("find Part by ID | part found");
                 return part;
             }
         }

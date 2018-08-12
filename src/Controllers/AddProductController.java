@@ -55,19 +55,12 @@ public class AddProductController implements Initializable {
     @FXML
     protected void addPart(ActionEvent event) throws IOException{
         System.out.println("Adding part to product ");
-            System.out.println("Added in house");
-
-
-            System.out.println(allPartsTable.getSelectionModel().getSelectedItem());
-            parts.add(Inventory.findPartByID(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID()));
             productToAdd.addAssociatedPart(Inventory.findPartByID(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID()));
-            System.out.println("size is ||" + parts.size());
     }
 
     @FXML
     protected void saveProduct(ActionEvent event) throws IOException{
 
-        System.out.println("save product button");
         productToAdd = new Product();
         productToAdd.setProductID(Inventory.getProductLength()+1);
         productToAdd.setName(addProductName.getText());
@@ -86,6 +79,8 @@ public class AddProductController implements Initializable {
     protected void deleteProduct(ActionEvent event){
 
         System.out.println("delete Product button");
+        productToAdd.removePartWithId(((Part) productPartsTable.getSelectionModel().getSelectedItem()).getPartID());
+        productPartsTable.getItems().removeAll(productPartsTable.getSelectionModel().getSelectedItem());
     }
 
 
@@ -116,7 +111,6 @@ public class AddProductController implements Initializable {
         productToAdd = new Product();
         inPartToAdd = new InHouse();
         outPartToAdd = new OutSourced();
-        parts = FXCollections.observableArrayList();
 
         colAddPartID.setCellValueFactory(new PropertyValueFactory<Part, Integer>("partID"));
         colAddPartName.setCellValueFactory(new PropertyValueFactory<Part, String>("name"));
