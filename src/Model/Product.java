@@ -203,27 +203,33 @@ public class Product {
 
 
     public ObservableList<Part> getAssociatedParts(){
+
         return associatedParts;
     }
 
 
     public int getProductID() {
+
         return productID.get();
     }
 
     public SimpleIntegerProperty productIDProperty() {
+
         return productID;
     }
 
     public void setProductID(int productID) {
+
         this.productID.set(productID);
     }
 
     public String getName() {
+
         return name.get();
     }
 
     public SimpleStringProperty nameProperty() {
+
         return name;
     }
 
@@ -231,57 +237,70 @@ public class Product {
         this.name.set(name);
     }
 
-    public double getPrice() {
+    public double getPrice()
+    {
         return price.get();
     }
 
     public SimpleDoubleProperty priceProperty() {
+
         return price;
     }
 
     public void setPrice(double price) {
+
         this.price.set(price);
     }
 
     public int getInStock() {
+
         return inStock.get();
     }
 
     public SimpleIntegerProperty inStockProperty() {
+
         return inStock;
     }
 
     public void setInStock(int inStock) {
+
         this.inStock.set(inStock);
     }
 
     public int getMin() {
+
         return min.get();
     }
 
     public SimpleIntegerProperty minProperty() {
+
         return min;
     }
 
     public void setMin(int min) {
+
         this.min.set(min);
     }
 
     public int getMax() {
+
         return max.get();
     }
 
     public SimpleIntegerProperty maxProperty() {
+
         return max;
     }
 
     public void setMax(int max) {
+
         this.max.set(max);
     }
 
-    public void addAssociatedPart(Part item){
+    public void addAssociatedPart(int id){
 
-        associatedParts.add(item);
+        associatedParts.add(Inventory.findPartByID(id));
+        System.out.println("product class associated parts size: "+ associatedParts.size());
     }
 
     public void removeAssociatedPart(int idx){
@@ -290,6 +309,7 @@ public class Product {
     }
 
     public Part lookupAssociatePart(int idx){
+
         return associatedParts.get(idx);
     }
 

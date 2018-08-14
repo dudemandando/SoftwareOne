@@ -49,21 +49,25 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductAdd(){
+
         System.out.println("Modify product Add Button Clicked --" );
     }
 
     @FXML
     public void modifyProductSave(){
+
         System.out.println("Modify product save clicked");
     }
 
     @FXML
     public void modifyProductDelete(){
+
         System.out.println("Modify product delete clicked");
     }
 
     @FXML
-    public void modifyProductSearch(){
+    public void modifyProductSearch()
+    {
         System.out.println("Modify product Search clicked");
     }
 
@@ -100,6 +104,7 @@ public class ModifyProductController implements Initializable {
         colCurrPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colCurrPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
         productPartsTable.refresh();
+        System.out.println("Size of product to modify______________" + productToModify.getAssociatedParts().size());
         productPartsTable.setItems(productToModify.getAssociatedParts());
 
 

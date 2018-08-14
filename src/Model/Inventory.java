@@ -23,10 +23,12 @@ public class Inventory {
     }
 
     public static Integer getModifyPartIdx() {
+
         return modifyPartIdx;
     }
 
     public static void setModifyPartIdx(Integer modifyPartIdx) {
+
         Inventory.modifyPartIdx = modifyPartIdx;
     }
 
@@ -40,6 +42,8 @@ public class Inventory {
         }
 
     public static void addProduct(Product item){
+
+        System.out.println("Add Product length of product assoc parts: " + item.getAssociatedParts().size());
         products.add(item);
     }
 

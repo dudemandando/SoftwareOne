@@ -55,13 +55,14 @@ public class AddProductController implements Initializable {
     @FXML
     protected void addPart(ActionEvent event) throws IOException{
         System.out.println("Adding part to product ");
-            productToAdd.addAssociatedPart(Inventory.findPartByID(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID()));
+        productToAdd.addAssociatedPart(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID());
+
     }
 
     @FXML
     protected void saveProduct(ActionEvent event) throws IOException{
 
-        productToAdd = new Product();
+
         productToAdd.setProductID(Inventory.getProductLength()+1);
         productToAdd.setName(addProductName.getText());
         productToAdd.setInStock(Integer.parseInt(addProductInv.getText()));
