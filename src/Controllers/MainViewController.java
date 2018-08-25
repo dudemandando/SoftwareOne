@@ -106,6 +106,7 @@ public class MainViewController implements Initializable {
     protected void productDeleteMain(ActionEvent event){
 
         System.out.println("Product Delete Main Clicked");
+        productTable.getItems().removeAll(productTable.getSelectionModel().getSelectedItem());
     }
 
     @FXML
