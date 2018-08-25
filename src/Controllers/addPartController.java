@@ -25,8 +25,6 @@ public class addPartController implements Initializable {
     private boolean isOutSourced;
     private ToggleGroup group;
 
-    private String errorMessage;
-
     @FXML private RadioButton inHouse;
     @FXML private RadioButton outSourced;
 
@@ -129,7 +127,6 @@ public class addPartController implements Initializable {
 
     private Boolean validateFields(){
         if( addPartName.getText().isEmpty() == true || addPartInv.getText().isEmpty() == true || addPartPrice.getText().isEmpty() == true || addPartMax.getText().isEmpty() == true || addPartMin.getText().isEmpty() | companyOrMachineID.getText().isEmpty()){
-            System.out.println("empty");
             AlertBox.display("Add Part Error", "Please complete all Text Fields.");
             return false;
         }else{

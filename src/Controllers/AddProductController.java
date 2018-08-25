@@ -61,19 +61,9 @@ public class AddProductController implements Initializable {
 
     @FXML
     protected void saveProduct(ActionEvent event) throws IOException{
-
-        System.out.println("the length of products is | "+ Inventory.getProductLength());
-        productToAdd.setProductID(Inventory.getProductLength()+1);
-        productToAdd.setName(addProductName.getText());
-        productToAdd.setInStock(Integer.parseInt(addProductInv.getText()));
-        productToAdd.setPrice(Double.parseDouble(addProductPrice.getText()));
-        productToAdd.setMax(Integer.parseInt(addProductMax.getText()));
-        productToAdd.setMin(Integer.parseInt(addProductMin.getText()));
-
-        Inventory.addProduct(productToAdd);
-
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
-        rootPane.getChildren().setAll(pane);
+        if(validateFields()){
+            createProduct();
+        }
     }
 
     @FXML
@@ -103,7 +93,6 @@ public class AddProductController implements Initializable {
     public void initialize(URL location, ResourceBundle resources){
         addProductID.setDisable(true);
         populatePartTable();
-
     }
 
     @FXML
@@ -128,5 +117,38 @@ public class AddProductController implements Initializable {
         productPartsTable.setItems(productToAdd.getAssociatedParts());
 
 
+    }
+
+    private void createProduct() throws IOException {
+        productToAdd.setProductID(Inventory.getProductLength()+1);
+        productToAdd.setName(addProductName.getText());
+        productToAdd.setInStock(Integer.parseInt(addProductInv.getText()));
+        productToAdd.setPrice(Double.parseDouble(addProductPrice.getText()));
+        productToAdd.setMax(Integer.parseInt(addProductMax.getText()));
+        productToAdd.setMin(Integer.parseInt(addProductMin.getText()));
+        Inventory.addProduct(productToAdd);
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
+
+    }
+
+    private Boolean validateFields(){
+        if(addProductName.getText().isEmpty() == true || addProductInv.getText().isEmpty() == true || addProductMax.getText().isEmpty() == true || addProductMin.getText().isEmpty() == true || addProductPrice.getText().isEmpty() == true){
+            AlertBox.display("Add Product Error", "Please Complete All Fields");
+            return false;
+        }else{
+            if(Integer.parseInt(addProductMax.getText()) < Integer.parseInt(addProductMin.getText()) || Integer.parseInt(addProductMax.getText()) > Integer.parseInt(addProductInv.getText())){
+                AlertBox.display("Add Product Error", "Please ensure that Product Min does not exceed Product Min and that Product Inventory Does not Exceed Product Max.");
+                return false;
+            }else{
+                if(productToAdd.getAssociatedParts().size() < 1 ){
+                    AlertBox.display("Add Product Error", "Please Add Parts to the Product");
+                    return false;
+                }else{
+                    return true;
+                }
+
+            }
+        }
     }
 }
