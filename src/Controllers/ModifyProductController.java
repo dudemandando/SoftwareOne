@@ -56,9 +56,14 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductSave() throws IOException{
+        if(validateFields()){
+            saveModifyProduct();
+        }
 
+    }
+
+    private void saveModifyProduct() throws IOException{
         System.out.println("Modify product save clicked");
-        //productToModify.setProductID(Inventory.getProductLength()+1);
         productToModify.setName(addProductName.getText());
         productToModify.setInStock(Integer.parseInt(addProductInv.getText()));
         productToModify.setPrice(Double.parseDouble(addProductPrice.getText()));
@@ -127,6 +132,26 @@ public class ModifyProductController implements Initializable {
         addProductPrice.setText(Double.toString(prod.getPrice()));
         addProductMax.setText(Integer.toString(prod.getMax()));
         addProductMin.setText(Integer.toString(prod.getMin()));
+    }
+
+    private Boolean validateFields(){
+        if(addProductName.getText().isEmpty() == true || addProductInv.getText().isEmpty() == true || addProductMax.getText().isEmpty() == true || addProductMin.getText().isEmpty() == true || addProductPrice.getText().isEmpty() == true){
+            AlertBox.display("Modify Product Error", "Please Complete All Fields");
+            return false;
+        }else{
+            if(Integer.parseInt(addProductMax.getText()) < Integer.parseInt(addProductMin.getText()) || Integer.parseInt(addProductMax.getText()) > Integer.parseInt(addProductInv.getText())){
+                AlertBox.display("Modify Product Error", "Please ensure that Product Min does not exceed Product Min and that Product Inventory Does not Exceed Product Max.");
+                return false;
+            }else{
+                if(productToModify.getAssociatedParts().size() < 1 ){
+                    AlertBox.display("Modify Product Error", "Please Add Parts to the Product");
+                    return false;
+                }else{
+                    return true;
+                }
+
+            }
+        }
     }
 
 }
