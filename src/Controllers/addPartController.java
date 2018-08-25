@@ -25,6 +25,8 @@ public class addPartController implements Initializable {
     private boolean isOutSourced;
     private ToggleGroup group;
 
+    private String errorMessage;
+
     @FXML private RadioButton inHouse;
     @FXML private RadioButton outSourced;
 
@@ -43,35 +45,11 @@ public class addPartController implements Initializable {
 
     @FXML
     public void addPartSave(ActionEvent event) throws IOException{
-
-        if(isOutSourced == true){
-            partToAddOut = new OutSourced();
-            partToAddOut.setPartID(Inventory.getPartLength()+1);
-            partToAddOut.setName(addPartName.getText());
-            partToAddOut.setInStock(Integer.parseInt(addPartInv.getText()));
-            partToAddOut.setPrice(Double.parseDouble(addPartPrice.getText()));
-            partToAddOut.setMax(Integer.parseInt(addPartMax.getText()));
-            partToAddOut.setMin(Integer.parseInt(addPartMin.getText()));
-            partToAddOut.setCompanyName(companyOrMachineID.toString());
-
-            Inventory.addPart(partToAddOut);
-            loadMain();
-
-        }else{
-            partToAddIn = new InHouse();
-            partToAddIn.setPartID(Inventory.getPartLength()+1);
-            partToAddIn.setName(addPartName.getText());
-            partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
-            partToAddIn.setPrice(Double.parseDouble(addPartPrice.getText()));
-            partToAddIn.setMax(Integer.parseInt(addPartMax.getText()));
-            partToAddIn.setMin(Integer.parseInt(addPartMin.getText()));
-            partToAddIn.setMachineID(Integer.parseInt(companyOrMachineID.getText()));
-
-            Inventory.addPart(partToAddIn);
-            loadMain();
-        }
-
+       if(validateFields()){
+           addPartToInventory();
+       }
     }
+
 
     @FXML
     public void addPartCancel(ActionEvent event) throws IOException {
@@ -116,5 +94,52 @@ public class addPartController implements Initializable {
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
         rootPane.getChildren().setAll(pane);
         addPartID.setText(Integer.toString(Inventory.getPartLength()+1));
+    }
+
+    private void addPartToInventory()throws IOException{
+        if(isOutSourced == true){
+            partToAddOut = new OutSourced();
+            partToAddOut.setPartID(Inventory.getPartLength()+1);
+            partToAddOut.setName(addPartName.getText());
+            partToAddOut.setInStock(Integer.parseInt(addPartInv.getText()));
+            partToAddOut.setPrice(Double.parseDouble(addPartPrice.getText()));
+            partToAddOut.setMax(Integer.parseInt(addPartMax.getText()));
+            partToAddOut.setMin(Integer.parseInt(addPartMin.getText()));
+            partToAddOut.setCompanyName(companyOrMachineID.toString());
+
+            Inventory.addPart(partToAddOut);
+            loadMain();
+
+        }else{
+            partToAddIn = new InHouse();
+            partToAddIn.setPartID(Inventory.getPartLength()+1);
+            partToAddIn.setName(addPartName.getText());
+            partToAddIn.setInStock(Integer.parseInt(addPartInv.getText()));
+            partToAddIn.setPrice(Double.parseDouble(addPartPrice.getText()));
+            partToAddIn.setMax(Integer.parseInt(addPartMax.getText()));
+            partToAddIn.setMin(Integer.parseInt(addPartMin.getText()));
+            partToAddIn.setMachineID(Integer.parseInt(companyOrMachineID.getText()));
+
+            Inventory.addPart(partToAddIn);
+            loadMain();
+        }
+    }
+
+
+
+    private Boolean validateFields(){
+        if( addPartName.getText().isEmpty() == true || addPartInv.getText().isEmpty() == true || addPartPrice.getText().isEmpty() == true || addPartMax.getText().isEmpty() == true || addPartMin.getText().isEmpty() | companyOrMachineID.getText().isEmpty()){
+            System.out.println("empty");
+            AlertBox.display("Add Part Error", "Please complete all Text Fields.");
+            return false;
+        }else{
+            if(Integer.parseInt(addPartMax.getText()) < Integer.parseInt(addPartMin.getText()) || Integer.parseInt(addPartMax.getText()) > Integer.parseInt(addPartInv.getText())){
+                AlertBox.display("Part Error", "Please ensure that Inventory does not exceed Part Maximum and Part Minimum is less than Part Maximum");
+                return false;
+            }else{
+                return true;
+            }
+
+        }
     }
 }

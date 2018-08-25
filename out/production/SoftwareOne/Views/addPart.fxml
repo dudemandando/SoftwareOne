@@ -68,8 +68,8 @@
       <TextField fx:id="addPartName" layoutX="307.0" layoutY="236.0" prefHeight="25.0" prefWidth="176.0" />
       <TextField fx:id="addPartInv" layoutX="307.0" layoutY="291.0" prefHeight="25.0" prefWidth="176.0" />
       <TextField fx:id="addPartPrice" layoutX="307.0" layoutY="346.0" prefHeight="25.0" prefWidth="176.0" />
-      <TextField fx:id="addPartMin" layoutX="179.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
-      <TextField fx:id="addPartMax" layoutX="343.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
+      <TextField fx:id="addPartMax" layoutX="179.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
+      <TextField fx:id="addPartMin" layoutX="343.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
       <TextField fx:id="companyOrMachineID" layoutX="307.0" layoutY="449.0" prefHeight="25.0" prefWidth="111.0" />
 
 

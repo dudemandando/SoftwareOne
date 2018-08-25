@@ -17,7 +17,7 @@ public class Main extends Application {
 //        //instantiating the Inventory Class
 //        inventory = new Inventory();
 
-        //Loading the Main View
+        //Loading the Main Vi
         Parent root = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
         primaryStage.setTitle("Dan Burke | Software One");
         primaryStage.setScene(new Scene(root));
