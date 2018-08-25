@@ -67,7 +67,6 @@ public class ModifyPartViewController implements Initializable{
 
         if(validateFields()){
             if(isOutSourced == false){
-                System.out.println("Modify part save clicked -- inhouse");
                 inPartToModify = new InHouse();
                 inPartToModify.setPartID(modifyPartId);
                 inPartToModify.setName(modifyPartName.getText());
@@ -82,7 +81,6 @@ public class ModifyPartViewController implements Initializable{
 
 
             }else{
-                System.out.println("Modify part save clicked -- outsourced");
                 outPartToModify = new OutSourced();
                 outPartToModify.setPartID(modifyPartId);
                 outPartToModify.setName(modifyPartName.getText());
@@ -107,8 +105,6 @@ public class ModifyPartViewController implements Initializable{
 
     @FXML
     public void modifyPartCancel(ActionEvent event) throws IOException {
-
-        System.out.println("Modify part Cancel Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
         rootPane.getChildren().setAll(pane);
     }
@@ -117,7 +113,6 @@ public class ModifyPartViewController implements Initializable{
     public void inHouseDial(ActionEvent event){
 
         isOutSourced = false;
-        System.out.println("Set to In house");
         machineOrCompany.setText("Machine ID");
     }
 
@@ -125,7 +120,6 @@ public class ModifyPartViewController implements Initializable{
     public void outSourceDial(ActionEvent event){
 
         isOutSourced = true;
-        System.out.println("Set to Outsourced");
         machineOrCompany.setText("Company Name");
 
     }

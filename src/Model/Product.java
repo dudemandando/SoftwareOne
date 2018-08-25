@@ -302,7 +302,7 @@ public class Product {
     public void addAssociatedPart(int id){
 
         associatedParts.add(Inventory.findPartByID(id));
-        System.out.println("product class associated parts size: "+ associatedParts.size());
+
     }
 
     public void removeAssociatedPart(int idx){

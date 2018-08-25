@@ -43,7 +43,6 @@ public class Inventory {
 
     public static void addProduct(Product item){
 
-        System.out.println("Add Product length of product assoc parts: " + item.getAssociatedParts().size());
         products.add(item);
     }
 
@@ -109,7 +108,6 @@ public class Inventory {
                 return part;
             }
         }
-        System.out.println("returning null");
         return null;
     }
 
@@ -120,7 +118,6 @@ public class Inventory {
 
         int counter = 0;
         for (Part item : allParts) {
-            System.out.println(part.getPartID() + "<- part ID | ");
             if (item.getPartID() == part.getPartID()){
                 allParts.set(counter, part);
             }else{
@@ -136,7 +133,6 @@ public class Inventory {
                 return product;
             }
         }
-        System.out.println("returning null product");
         return null;
     }
 

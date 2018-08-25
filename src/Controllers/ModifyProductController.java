@@ -49,8 +49,6 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductAdd(){
-
-        System.out.println("Modify product Add Button Clicked --" );
         productToModify.addAssociatedPart(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID());
     }
 
@@ -63,7 +61,6 @@ public class ModifyProductController implements Initializable {
     }
 
     private void saveModifyProduct() throws IOException{
-        System.out.println("Modify product save clicked");
         productToModify.setName(addProductName.getText());
         productToModify.setInStock(Integer.parseInt(addProductInv.getText()));
         productToModify.setPrice(Double.parseDouble(addProductPrice.getText()));
@@ -75,8 +72,6 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductDelete(){
-
-        System.out.println("Modify product delete clicked");
         productPartsTable.getItems().remove(productPartsTable.getSelectionModel().getSelectedItem());
     }
 
@@ -89,8 +84,6 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductCancel() throws IOException {
-
-        System.out.println("Modify product Cancel Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
         rootPane.getChildren().setAll(pane);
 
@@ -119,7 +112,6 @@ public class ModifyProductController implements Initializable {
         colCurrPartInv.setCellValueFactory(new PropertyValueFactory<Part, Integer>("inStock"));
         colCurrPartPrice.setCellValueFactory(new PropertyValueFactory<Part, Double>("price"));
         productPartsTable.refresh();
-        System.out.println("Size of product to modify______________" + productToModify.getAssociatedParts().size());
         productPartsTable.setItems(productToModify.getAssociatedParts());
 
 

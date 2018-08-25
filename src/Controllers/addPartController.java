@@ -51,17 +51,13 @@ public class addPartController implements Initializable {
 
     @FXML
     public void addPartCancel(ActionEvent event) throws IOException {
-
-        System.out.println("Add part Cancel Clicked");
         loadMain();
-
     }
 
     @FXML
     public void inHouseDial(ActionEvent event){
 
         isOutSourced = false;
-        System.out.println("Set to In house");
         machineOrCompany.setText("Machine ID");
     }
 
@@ -69,7 +65,6 @@ public class addPartController implements Initializable {
     public void outSourceDial(ActionEvent event){
 
         isOutSourced = true;
-        System.out.println("Set to Outsourced");
         machineOrCompany.setText("Company Name");
 
     }
