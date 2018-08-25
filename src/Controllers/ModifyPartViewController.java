@@ -65,40 +65,41 @@ public class ModifyPartViewController implements Initializable{
     @FXML
     public void modifyPartSave(ActionEvent event) throws IOException{
 
+        if(validateFields()){
+            if(isOutSourced == false){
+                System.out.println("Modify part save clicked -- inhouse");
+                inPartToModify = new InHouse();
+                inPartToModify.setPartID(modifyPartId);
+                inPartToModify.setName(modifyPartName.getText());
+                inPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
+                inPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
+                inPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
+                inPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
+                inPartToModify.setMachineID(Integer.parseInt(modifyPartCompanyOrMachineID.getText()));
 
 
-        if(isOutSourced == false){
-            System.out.println("Modify part save clicked -- inhouse");
-            inPartToModify = new InHouse();
-            inPartToModify.setPartID(modifyPartId);
-            inPartToModify.setName(modifyPartName.getText());
-            inPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
-            inPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
-            inPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
-            inPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
-            inPartToModify.setMachineID(Integer.parseInt(modifyPartCompanyOrMachineID.getText()));
+                Inventory.replacePart(inPartToModify);
 
 
-            Inventory.replacePart(inPartToModify);
+            }else{
+                System.out.println("Modify part save clicked -- outsourced");
+                outPartToModify = new OutSourced();
+                outPartToModify.setPartID(modifyPartId);
+                outPartToModify.setName(modifyPartName.getText());
+                outPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
+                outPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
+                outPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
+                outPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
+                outPartToModify.setCompanyName(modifyPartCompanyOrMachineID.getText());
 
+                Inventory.replacePart(outPartToModify);
 
-        }else{
-            System.out.println("Modify part save clicked -- outsourced");
-            outPartToModify = new OutSourced();
-            outPartToModify.setPartID(modifyPartId);
-            outPartToModify.setName(modifyPartName.getText());
-            outPartToModify.setInStock(Integer.parseInt(modifyPartInv.getText()));
-            outPartToModify.setPrice(Double.parseDouble(modifyPartPrice.getText()));
-            outPartToModify.setMax(Integer.parseInt(modifyPartMax.getText()));
-            outPartToModify.setMin(Integer.parseInt(modifyPartMin.getText()));
-            outPartToModify.setCompanyName(modifyPartCompanyOrMachineID.getText());
+            }
 
-            Inventory.replacePart(outPartToModify);
-
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+            rootPane.getChildren().setAll(pane);
         }
 
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
-        rootPane.getChildren().setAll(pane);
     }
 
 
@@ -168,5 +169,19 @@ public class ModifyPartViewController implements Initializable{
 
     }
 
+    private Boolean validateFields(){
+        if( modifyPartName.getText().isEmpty() == true || modifyPartInv.getText().isEmpty() == true || modifyPartPrice.getText().isEmpty() == true || modifyPartMax.getText().isEmpty() == true || modifyPartMin.getText().isEmpty() | modifyPartCompanyOrMachineID.getText().isEmpty()){
+            AlertBox.display("Add Part Error", "Please complete all Text Fields.");
+            return false;
+        }else{
+            if(Integer.parseInt(modifyPartMax.getText()) < Integer.parseInt(modifyPartMin.getText()) || Integer.parseInt(modifyPartMax.getText()) > Integer.parseInt(modifyPartInv.getText())){
+                AlertBox.display("Part Error", "Please ensure that Inventory does not exceed Part Maximum and Part Minimum is less than Part Maximum");
+                return false;
+            }else{
+                return true;
+            }
+
+        }
+    }
 
 }

@@ -14,7 +14,7 @@
                 <Font size="15.0" />
             </font>
         </Label>
-        <Label layoutX="15.0" layoutY="23.0" prefHeight="59.0" prefWidth="159.0" text="Add Part">
+        <Label layoutX="15.0" layoutY="23.0" prefHeight="59.0" prefWidth="159.0" text="Modify Part">
             <font>
                 <Font size="27.0" />
             </font>
@@ -68,8 +68,8 @@
         <TextField fx:id="modifyPartName" layoutX="307.0" layoutY="236.0" prefHeight="25.0" prefWidth="176.0" />
         <TextField fx:id="modifyPartInv" layoutX="307.0" layoutY="291.0" prefHeight="25.0" prefWidth="176.0" />
         <TextField fx:id="modifyPartPrice" layoutX="307.0" layoutY="346.0" prefHeight="25.0" prefWidth="176.0" />
-        <TextField fx:id="modifyPartMin" layoutX="179.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
-        <TextField fx:id="modifyPartMax" layoutX="343.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
+        <TextField fx:id="modifyPartMax" layoutX="179.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
+        <TextField fx:id="modifyPartMin" layoutX="343.0" layoutY="399.0" prefHeight="25.0" prefWidth="111.0" />
         <TextField fx:id="modifyPartCompanyOrMachineID" layoutX="307.0" layoutY="449.0" prefHeight="25.0" prefWidth="111.0" />
 
 
