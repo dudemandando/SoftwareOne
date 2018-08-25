@@ -51,18 +51,28 @@ public class ModifyProductController implements Initializable {
     public void modifyProductAdd(){
 
         System.out.println("Modify product Add Button Clicked --" );
+        productToModify.addAssociatedPart(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID());
     }
 
     @FXML
-    public void modifyProductSave(){
+    public void modifyProductSave() throws IOException{
 
         System.out.println("Modify product save clicked");
+        productToModify.setProductID(Inventory.getProductLength()+1);
+        productToModify.setName(addProductName.getText());
+        productToModify.setInStock(Integer.parseInt(addProductInv.getText()));
+        productToModify.setPrice(Double.parseDouble(addProductPrice.getText()));
+        productToModify.setMax(Integer.parseInt(addProductMax.getText()));
+        productToModify.setMin(Integer.parseInt(addProductMin.getText()));
+        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+        rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     public void modifyProductDelete(){
 
         System.out.println("Modify product delete clicked");
+        productPartsTable.getItems().remove(productPartsTable.getSelectionModel().getSelectedItem());
     }
 
     @FXML
@@ -73,7 +83,7 @@ public class ModifyProductController implements Initializable {
 
 
     @FXML
-    public void modifyProductCancel(ActionEvent event) throws IOException {
+    public void modifyProductCancel() throws IOException {
 
         System.out.println("Modify product Cancel Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));

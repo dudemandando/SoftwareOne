@@ -42,10 +42,10 @@
          </columns>
       </TableView>
 
-      <Button  layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
-      <Button  layoutX="1131.0" layoutY="661.0" mnemonicParsing="false" text="Delete" />
-      <Button  layoutX="940.0" layoutY="719.0" mnemonicParsing="false" text="Save" />
-      <Button  layoutX="1060.0" layoutY="719.0" mnemonicParsing="false" text="Cancel" />
+      <Button onAction="#modifyProductAdd" layoutX="1110.0" layoutY="392.0" mnemonicParsing="false" text="Add" />
+      <Button onAction="#modifyProductDelete" layoutX="1131.0" layoutY="661.0" mnemonicParsing="false" text="Delete" />
+      <Button onAction="#modifyProductSave" layoutX="940.0" layoutY="719.0" mnemonicParsing="false" text="Save" />
+      <Button onAction="#modifyProductCancel" layoutX="1060.0" layoutY="719.0" mnemonicParsing="false" text="Cancel" />
 
       <!-- Second Table-->
       <TableView fx:id="productPartsTable" layoutX="611.0" layoutY="451.0" prefHeight="200.0" prefWidth="600.0">

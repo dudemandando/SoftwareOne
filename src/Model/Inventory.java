@@ -140,5 +140,15 @@ public class Inventory {
         return null;
     }
 
+    public static void replaceProduct(Product product){
+        int counter = 0;
+        for (Product item: products){
+            if(item.getProductID() == product.getProductID()){
+                products.set(counter, product);
+            }else{
+                counter +=1;
+            }
+        }
+    }
 
 }
