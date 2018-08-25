@@ -58,7 +58,7 @@ public class ModifyProductController implements Initializable {
     public void modifyProductSave() throws IOException{
 
         System.out.println("Modify product save clicked");
-        productToModify.setProductID(Inventory.getProductLength()+1);
+        //productToModify.setProductID(Inventory.getProductLength()+1);
         productToModify.setName(addProductName.getText());
         productToModify.setInStock(Integer.parseInt(addProductInv.getText()));
         productToModify.setPrice(Double.parseDouble(addProductPrice.getText()));

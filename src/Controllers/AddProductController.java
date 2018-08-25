@@ -62,7 +62,7 @@ public class AddProductController implements Initializable {
     @FXML
     protected void saveProduct(ActionEvent event) throws IOException{
 
-
+        System.out.println("the length of products is | "+ Inventory.getProductLength());
         productToAdd.setProductID(Inventory.getProductLength()+1);
         productToAdd.setName(addProductName.getText());
         productToAdd.setInStock(Integer.parseInt(addProductInv.getText()));
