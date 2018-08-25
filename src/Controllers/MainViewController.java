@@ -45,12 +45,18 @@ public class MainViewController implements Initializable {
     @FXML protected void partSearchMain(ActionEvent event){
 
         System.out.println("Part Search Main Clicked --" + partSearchInputText.getText());
+        if(productSearchInputText.getText().length() == 0){
+            AlertBox.display("Part Search Error", "Please enter terms to search parts.");
+        }
     }
 
     @FXML
     protected void productSearchMain(ActionEvent event){
 
         System.out.println("Product Search Main Clicked--" + productSearchInputText.getText());
+        if(partSearchInputText.getText().length() == 0){
+            AlertBox.display("Product Search Error", "Please enter terms to search products.");
+        }
     }
 
     @FXML
@@ -65,21 +71,33 @@ public class MainViewController implements Initializable {
     protected void productAddMain(ActionEvent event) throws IOException{
 
         System.out.println("Product Add Main Clicked");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/addProduct.fxml"));
-        rootPane.getChildren().setAll(pane);
+        if(Inventory.getPartLength() <1){
+            AlertBox.display("Part Error", "There are no parts in Inventory, please add a part before creating Products");
+        }else{
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/addProduct.fxml"));
+            rootPane.getChildren().setAll(pane);
+        }
+
     }
 
     @FXML
     protected void partModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Part Modify Main Clicked");
-        Inventory.setModifyPartIdx(((Part) partTable.getSelectionModel().getSelectedItem()).getPartID());
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../Views/modifyPart.fxml"));
-        ModifyPartViewController modifyControl = loader.getController();
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyPart.fxml"));
-        rootPane.getChildren().setAll(pane);
-
+        if(Inventory.getPartLength() < 1){
+            AlertBox.display("Part Error", "There are no parts. Please add a part");
+        }else{
+            if(partTable.getSelectionModel().getSelectedItem() != null){
+                Inventory.setModifyPartIdx(((Part) partTable.getSelectionModel().getSelectedItem()).getPartID());
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("../Views/modifyPart.fxml"));
+                ModifyPartViewController modifyControl = loader.getController();
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyPart.fxml"));
+                rootPane.getChildren().setAll(pane);
+            }else{
+                AlertBox.display("Part Error", "Please select a part to modify. If there are no parts listed, please add a part");
+            }
+        }
 
     }
 
@@ -87,23 +105,52 @@ public class MainViewController implements Initializable {
     protected void productModifyMain(ActionEvent event) throws IOException{
 
         System.out.println("Product Modify Main Clicked");
-        Inventory.setModifyProductId(((Product) productTable.getSelectionModel().getSelectedItem()).getProductID()) ;
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyProduct.fxml"));
-        rootPane.getChildren().setAll(pane);
+        if(Inventory.getProductLength() < 1){
+            AlertBox.display("Product Error", "There are no products. Please add a product");
+        }else{
+            if(productTable.getSelectionModel().getSelectedItem() != null){
+                Inventory.setModifyProductId(((Product) productTable.getSelectionModel().getSelectedItem()).getProductID()) ;
+                AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/modifyProduct.fxml"));
+                rootPane.getChildren().setAll(pane);
+            }else{
+                AlertBox.display("Product Error", "Please select a product to modify. If there are no products listed, please add a product");
+            }
+        }
+
     }
 
     @FXML
     protected void partDeleteMain(ActionEvent event){
 
         System.out.println("Part Delete Main Clicked");
-        partTable.getItems().removeAll(partTable.getSelectionModel().getSelectedItem());
+
+        if(Inventory.getPartLength() < 1){
+            AlertBox.display("Part Error", "There are no parts. Please add a part");
+        }else{
+            if(partTable.getSelectionModel().getSelectedItem() != null){
+                partTable.getItems().removeAll(partTable.getSelectionModel().getSelectedItem());
+            }else{
+                AlertBox.display("Part Error", "Please select a part to remove. If there are no parts listed, please add a part");
+            }
+        }
     }
 
     @FXML
     protected void productDeleteMain(ActionEvent event){
 
         System.out.println("Product Delete Main Clicked");
-        productTable.getItems().removeAll(productTable.getSelectionModel().getSelectedItem());
+
+        if(Inventory.getProductLength() < 1){
+            AlertBox.display("Product Error", "There are no products. Please add a product");
+        }else{
+            if(productTable.getSelectionModel().getSelectedItem() != null){
+                productTable.getItems().removeAll(productTable.getSelectionModel().getSelectedItem());
+            }else{
+                AlertBox.display("Product Error", "Please select a product to remove. If there are no products listed, please add a product");
+            }
+        }
+
+
     }
 
     @FXML
@@ -143,8 +190,6 @@ public class MainViewController implements Initializable {
         productTable.refresh();
         productTable.setItems(Inventory.getProducts());
     }
-
-
 
 
 }
