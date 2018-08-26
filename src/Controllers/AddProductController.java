@@ -144,7 +144,14 @@ public class AddProductController implements Initializable {
                     AlertBox.display("Add Product Error", "Please Add Parts to the Product");
                     return false;
                 }else{
-                    return true;
+                    if(Double.parseDouble(addProductPrice.getText()) < productToAdd.getCostOfParts()){
+                        AlertBox.display("Add Product Error", "Please enter a Price greater than the cost of parts which is: " + productToAdd.getCostOfParts());
+                        return false;
+                    }else{
+
+                        return true;
+                    }
+
                 }
 
             }

@@ -139,7 +139,13 @@ public class ModifyProductController implements Initializable {
                     AlertBox.display("Modify Product Error", "Please Add Parts to the Product");
                     return false;
                 }else{
-                    return true;
+                    if(Double.parseDouble(addProductPrice.getText()) < productToModify.getCostOfParts()){
+                        AlertBox.display("Modify Product Error", "Please enter a Price greater than the cost of parts which is: " + productToModify.getCostOfParts());
+                        return false;
+                    }else{
+
+                        return true;
+                    }
                 }
 
             }

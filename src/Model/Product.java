@@ -323,5 +323,13 @@ public class Product {
         }
     }
 
+    public double getCostOfParts(){
+        int minimumCost = 0;
+        for(int i = 0; i< associatedParts.size(); i++){
+            minimumCost += associatedParts.get(i).getPrice();
+        }
+        return minimumCost;
+    }
+
 
 }
