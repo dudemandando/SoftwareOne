@@ -40,8 +40,6 @@ public class MainViewController implements Initializable {
     @FXML
     private Button exit;
 
-
-
     @FXML protected void partSearchMain(ActionEvent event){
 
         if(productSearchInputText.getText().length() == 0){

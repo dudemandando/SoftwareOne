@@ -14,12 +14,12 @@ public class AlertBox {
         //block interaction until they resolve this alert window
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinHeight(500);
-        window.setMinWidth(500);
+        window.setMinHeight(150);
+        window.setWidth(500);
 
         Label label = new Label();
         label.setText(message);
-        Button closeButton = new Button("Close the Window");
+        Button closeButton = new Button("Ok");
         closeButton.setOnAction(event -> window.close());
 
         VBox layout = new VBox(10);
