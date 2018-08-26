@@ -44,7 +44,6 @@ public class MainViewController implements Initializable {
 
     @FXML protected void partSearchMain(ActionEvent event){
 
-        System.out.println("Part Search Main Clicked --" + partSearchInputText.getText());
         if(productSearchInputText.getText().length() == 0){
             AlertBox.display("Part Search Error", "Please enter terms to search parts.");
         }
@@ -52,8 +51,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void productSearchMain(ActionEvent event){
-
-        System.out.println("Product Search Main Clicked--" + productSearchInputText.getText());
         if(partSearchInputText.getText().length() == 0){
             AlertBox.display("Product Search Error", "Please enter terms to search products.");
         }
@@ -61,16 +58,12 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void partAddMain(ActionEvent event) throws IOException {
-
-        System.out.println("Part Add Main Clicked");
         AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/addPart.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
     @FXML
     protected void productAddMain(ActionEvent event) throws IOException{
-
-        System.out.println("Product Add Main Clicked");
         if(Inventory.getPartLength() <1){
             AlertBox.display("Part Error", "There are no parts in Inventory, please add a part before creating Products");
         }else{
@@ -82,8 +75,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void partModifyMain(ActionEvent event) throws IOException{
-
-        System.out.println("Part Modify Main Clicked");
         if(Inventory.getPartLength() < 1){
             AlertBox.display("Part Error", "There are no parts. Please add a part");
         }else{
@@ -103,8 +94,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void productModifyMain(ActionEvent event) throws IOException{
-
-        System.out.println("Product Modify Main Clicked");
         if(Inventory.getProductLength() < 1){
             AlertBox.display("Product Error", "There are no products. Please add a product");
         }else{
@@ -121,9 +110,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void partDeleteMain(ActionEvent event){
-
-        System.out.println("Part Delete Main Clicked");
-
         if(Inventory.getPartLength() < 1){
             AlertBox.display("Part Error", "There are no parts. Please add a part");
         }else{
@@ -137,9 +123,6 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void productDeleteMain(ActionEvent event){
-
-        System.out.println("Product Delete Main Clicked");
-
         if(Inventory.getProductLength() < 1){
             AlertBox.display("Product Error", "There are no products. Please add a product");
         }else{
@@ -149,8 +132,6 @@ public class MainViewController implements Initializable {
                 AlertBox.display("Product Error", "Please select a product to remove. If there are no products listed, please add a product");
             }
         }
-
-
     }
 
     @FXML
@@ -165,8 +146,6 @@ public class MainViewController implements Initializable {
 
             populatePartTable();
             populateProductTable();
-            //alertBox = new AlertBox();
-
     }
 
     @FXML
