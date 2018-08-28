@@ -43,6 +43,9 @@ public class ModifyPartViewController implements Initializable{
 
     @FXML private TextField modifypartSearchInput;
 
+    Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Delete?", ButtonType.YES, ButtonType.CANCEL);
+    Alert cancelConfirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Cancel? ", ButtonType.YES, ButtonType.CANCEL);
+
     @FXML
     private AnchorPane rootPane;
 
@@ -105,8 +108,12 @@ public class ModifyPartViewController implements Initializable{
 
     @FXML
     public void modifyPartCancel(ActionEvent event) throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
-        rootPane.getChildren().setAll(pane);
+        cancelConfirm.showAndWait();
+        if(cancelConfirm.getResult() == ButtonType.YES){
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+            rootPane.getChildren().setAll(pane);
+        }
+
     }
 
     @FXML

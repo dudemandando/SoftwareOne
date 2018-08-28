@@ -4,10 +4,7 @@ import Model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 
@@ -43,6 +40,9 @@ public class ModifyProductController implements Initializable {
 
     @FXML private TextField modifyProductSearchInput;
 
+    Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Delete?", ButtonType.YES, ButtonType.CANCEL);
+    Alert cancelConfirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Cancel? ", ButtonType.YES, ButtonType.CANCEL);
+
     @FXML
     private AnchorPane rootPane;
 
@@ -72,7 +72,11 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductDelete(){
-        productPartsTable.getItems().remove(productPartsTable.getSelectionModel().getSelectedItem());
+        confirmDelete.showAndWait();
+        if(confirmDelete.getResult() == ButtonType.YES){
+            productPartsTable.getItems().remove(productPartsTable.getSelectionModel().getSelectedItem());
+        }
+
     }
 
     @FXML
@@ -84,8 +88,12 @@ public class ModifyProductController implements Initializable {
 
     @FXML
     public void modifyProductCancel() throws IOException {
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
-        rootPane.getChildren().setAll(pane);
+        cancelConfirm.showAndWait();
+        if(cancelConfirm.getResult() == ButtonType.YES){
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+            rootPane.getChildren().setAll(pane);
+        }
+
 
     }
 

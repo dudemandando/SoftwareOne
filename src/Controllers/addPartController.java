@@ -12,6 +12,7 @@ import javafx.scene.control.RadioButton;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -37,6 +38,7 @@ public class addPartController implements Initializable {
     @FXML  private TextField companyOrMachineID;
     @FXML private javafx.scene.control.Label machineOrCompany;
 
+    Alert cancelAdd = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Cancel? ", ButtonType.YES, ButtonType.CANCEL);
 
     @FXML
     private AnchorPane rootPane;
@@ -51,7 +53,10 @@ public class addPartController implements Initializable {
 
     @FXML
     public void addPartCancel(ActionEvent event) throws IOException {
-        loadMain();
+        cancelAdd.showAndWait();
+        if(cancelAdd.getResult() == ButtonType.YES){
+            loadMain();
+        }
     }
 
     @FXML

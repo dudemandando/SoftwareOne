@@ -37,6 +37,9 @@ public class MainViewController implements Initializable {
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
 
+    Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Delete?", ButtonType.YES, ButtonType.CANCEL);
+
+
     @FXML
     private Button exit;
 
@@ -112,7 +115,10 @@ public class MainViewController implements Initializable {
             AlertBox.display("Part Error", "There are no parts. Please add a part");
         }else{
             if(partTable.getSelectionModel().getSelectedItem() != null){
-                partTable.getItems().removeAll(partTable.getSelectionModel().getSelectedItem());
+                confirmDelete.showAndWait();
+                if(confirmDelete.getResult() == ButtonType.YES){
+                    partTable.getItems().removeAll(partTable.getSelectionModel().getSelectedItem());
+                }
             }else{
                 AlertBox.display("Part Error", "Please select a part to remove. If there are no parts listed, please add a part");
             }
@@ -125,7 +131,11 @@ public class MainViewController implements Initializable {
             AlertBox.display("Product Error", "There are no products. Please add a product");
         }else{
             if(productTable.getSelectionModel().getSelectedItem() != null){
-                productTable.getItems().removeAll(productTable.getSelectionModel().getSelectedItem());
+                confirmDelete.showAndWait();
+                if(confirmDelete.getResult() == ButtonType.YES){
+                    productTable.getItems().removeAll(productTable.getSelectionModel().getSelectedItem());
+                }
+
             }else{
                 AlertBox.display("Product Error", "Please select a product to remove. If there are no products listed, please add a product");
             }

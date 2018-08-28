@@ -9,9 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -49,6 +48,9 @@ public class AddProductController implements Initializable {
     @FXML private TextField addProductMin;
     @FXML private TextField addProductMax;
 
+    Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Delete?", ButtonType.YES, ButtonType.CANCEL);
+    Alert cancelConfirm = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Cancel? ", ButtonType.YES, ButtonType.CANCEL);
+
     @FXML
     private AnchorPane rootPane;
 
@@ -68,9 +70,17 @@ public class AddProductController implements Initializable {
     @FXML
     protected void deleteProduct(ActionEvent event){
 
-        System.out.println("delete Product button");
-        productToAdd.removePartWithId(((Part) productPartsTable.getSelectionModel().getSelectedItem()).getPartID());
-        productPartsTable.getItems().removeAll(productPartsTable.getSelectionModel().getSelectedItem());
+
+        if(productPartsTable.getSelectionModel().getSelectedItem() != null){
+            confirmDelete.showAndWait();
+            if(confirmDelete.getResult() == ButtonType.YES){
+                productToAdd.removePartWithId(((Part) productPartsTable.getSelectionModel().getSelectedItem()).getPartID());
+                productPartsTable.getItems().removeAll(productPartsTable.getSelectionModel().getSelectedItem());
+            }
+        }else{
+            AlertBox.display("Delete Part Error", "Please select a part to delete, if there are not parts, please add a part.");
+        }
+
     }
 
 
@@ -78,9 +88,12 @@ public class AddProductController implements Initializable {
     @FXML
     protected void cancelProduct(ActionEvent event) throws IOException {
 
-        System.out.println("cancel add product");
-        AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
-        rootPane.getChildren().setAll(pane);
+        cancelConfirm.showAndWait();
+        if(cancelConfirm.getResult() == ButtonType.YES){
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../Views/mainView.fxml"));
+            rootPane.getChildren().setAll(pane);
+        }
+
     }
 
     @FXML
