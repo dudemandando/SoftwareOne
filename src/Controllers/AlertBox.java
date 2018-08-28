@@ -14,7 +14,7 @@ public class AlertBox {
         //block interaction until they resolve this alert window
         window.initModality(Modality.APPLICATION_MODAL);
         window.setTitle(title);
-        window.setMinHeight(150);
+        window.setHeight(150);
         window.setWidth(500);
 
         Label label = new Label();
