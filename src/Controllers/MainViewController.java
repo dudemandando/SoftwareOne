@@ -66,33 +66,24 @@ public class MainViewController implements Initializable {
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
             }
         }
-
-
-
     }
 
     @ FXML protected void productSearchMain(ActionEvent event){
-//        productFound = false;
-//        if(productSearchInputText.getText().length() > 0){
-//            //Search Names
-//            if(Inventory.findProductByName(productSearchInputText.getText()) != null){
-//                //product found
-//                searchProductID = Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())).getPartID();
-//                AlertBox.display("Part Search Error", "WORKED.");
-//            }else{
-//                //product name not found
-//                if(Inventory.findProductByID(Integer.parseInt(productSearchInputText.getText())) != null){
-//                    //product found by ID
-//                    searchProductID = Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())).getPartID();
-//                    AlertBox.display("Part Search Error", "WORKED.");
-//
-//                }else{
-//                    //give alert to user
-//                    AlertBox.display("Product Search Error", "Search failed. Please enter new terms to search.");
-//                }
-//            }
-//
-//        }
+        if(Inventory.isInteger(productSearchInputText.getText()) == true){
+            if(Inventory.findPartByID(Integer.parseInt(productSearchInputText.getText())) != null){
+                AlertBox.display("Product Search Error", "WORKED.");
+            }else{
+                AlertBox.display("Productt Search Error", "Search failed. Please enter new terms to search.");
+            }
+        }
+
+        if(Inventory.isInteger(productSearchInputText.getText()) == false){
+            if(Inventory.findPartByName(productSearchInputText.getText()) != null){
+                AlertBox.display("Part Search Error", "WORKED.");
+            }else{
+                AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+            }
+        }
     }
 
 

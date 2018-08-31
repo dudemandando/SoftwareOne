@@ -149,8 +149,7 @@ public class Inventory {
 
     public static Product findProductByName(String name){
         for (Product product: products){
-            System.out.println(name + "----" + product.getName());
-            if(product.getName() == name){
+            if(name.equalsIgnoreCase(product.getName())){
                 return product;
             }
         }
