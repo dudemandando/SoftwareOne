@@ -54,6 +54,7 @@ public class MainViewController implements Initializable {
         if(Inventory.isInteger(partSearchInputText.getText()) == true){
             if(Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())) != null){
                 AlertBox.display("Part Search Error", "WORKED.");
+                searchPartID = Integer.parseInt(partSearchInputText.getText());
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
             }
@@ -62,6 +63,7 @@ public class MainViewController implements Initializable {
         if(Inventory.isInteger(partSearchInputText.getText()) == false){
             if(Inventory.findPartByName(partSearchInputText.getText()) != null){
                 AlertBox.display("Part Search Error", "WORKED.");
+                searchPartID = Inventory.findPartByName(partSearchInputText.getText()).getPartID();
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
             }
@@ -70,16 +72,18 @@ public class MainViewController implements Initializable {
 
     @ FXML protected void productSearchMain(ActionEvent event){
         if(Inventory.isInteger(productSearchInputText.getText()) == true){
-            if(Inventory.findPartByID(Integer.parseInt(productSearchInputText.getText())) != null){
+            if(Inventory.findProductByID(Integer.parseInt(productSearchInputText.getText())) != null){
                 AlertBox.display("Product Search Error", "WORKED.");
+                searchProductID = Integer.parseInt(productSearchInputText.getText());
             }else{
                 AlertBox.display("Productt Search Error", "Search failed. Please enter new terms to search.");
             }
         }
 
         if(Inventory.isInteger(productSearchInputText.getText()) == false){
-            if(Inventory.findPartByName(productSearchInputText.getText()) != null){
+            if(Inventory.findProductByName(productSearchInputText.getText()) != null){
                 AlertBox.display("Part Search Error", "WORKED.");
+                searchProductID = Inventory.findProductByName(productSearchInputText.getText()).getProductID();
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
             }
