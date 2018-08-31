@@ -111,6 +111,17 @@ public class Inventory {
         return null;
     }
 
+    public static Part findPartByName(String name){
+        for (Part part : allParts) {
+
+            if (name.equalsIgnoreCase(part.getName())){
+                System.out.println("boom");
+                return part;
+            }
+        }
+        return null;
+    }
+
 
 
 
@@ -136,6 +147,16 @@ public class Inventory {
         return null;
     }
 
+    public static Product findProductByName(String name){
+        for (Product product: products){
+            System.out.println(name + "----" + product.getName());
+            if(product.getName() == name){
+                return product;
+            }
+        }
+        return null;
+    }
+
     public static void replaceProduct(Product product){
         int counter = 0;
         for (Product item: products){
@@ -145,6 +166,22 @@ public class Inventory {
                 counter +=1;
             }
         }
+    }
+
+    public static boolean isInteger(String s) {
+        return isInteger(s,10);
+    }
+
+    public static boolean isInteger(String s, int radix) {
+        if(s.isEmpty()) return false;
+        for(int i = 0; i < s.length(); i++) {
+            if(i == 0 && s.charAt(i) == '-') {
+                if(s.length() == 1) return false;
+                else continue;
+            }
+            if(Character.digit(s.charAt(i),radix) < 0) return false;
+        }
+        return true;
     }
 
 }

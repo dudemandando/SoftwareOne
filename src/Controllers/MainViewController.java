@@ -37,6 +37,12 @@ public class MainViewController implements Initializable {
     @FXML private TextField partSearchInputText;
     @FXML private TextField productSearchInputText;
 
+    private boolean partFound = false;
+    private boolean productFound = false;
+
+    private int searchPartID;
+    private int searchProductID;
+
     Alert confirmDelete = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to Delete?", ButtonType.YES, ButtonType.CANCEL);
 
 
@@ -45,17 +51,51 @@ public class MainViewController implements Initializable {
 
     @FXML protected void partSearchMain(ActionEvent event){
 
-        if(productSearchInputText.getText().length() == 0){
-            AlertBox.display("Part Search Error", "Please enter terms to search parts.");
+        if(Inventory.isInteger(partSearchInputText.getText()) == true){
+            if(Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())) != null){
+                AlertBox.display("Part Search Error", "WORKED.");
+            }else{
+                AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+            }
         }
+
+        if(Inventory.isInteger(partSearchInputText.getText()) == false){
+            if(Inventory.findPartByName(partSearchInputText.getText()) != null){
+                AlertBox.display("Part Search Error", "WORKED.");
+            }else{
+                AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+            }
+        }
+
+
+
     }
 
-    @FXML
-    protected void productSearchMain(ActionEvent event){
-        if(partSearchInputText.getText().length() == 0){
-            AlertBox.display("Product Search Error", "Please enter terms to search products.");
-        }
+    @ FXML protected void productSearchMain(ActionEvent event){
+//        productFound = false;
+//        if(productSearchInputText.getText().length() > 0){
+//            //Search Names
+//            if(Inventory.findProductByName(productSearchInputText.getText()) != null){
+//                //product found
+//                searchProductID = Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())).getPartID();
+//                AlertBox.display("Part Search Error", "WORKED.");
+//            }else{
+//                //product name not found
+//                if(Inventory.findProductByID(Integer.parseInt(productSearchInputText.getText())) != null){
+//                    //product found by ID
+//                    searchProductID = Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())).getPartID();
+//                    AlertBox.display("Part Search Error", "WORKED.");
+//
+//                }else{
+//                    //give alert to user
+//                    AlertBox.display("Product Search Error", "Search failed. Please enter new terms to search.");
+//                }
+//            }
+//
+//        }
     }
+
+
 
     @FXML
     protected void partAddMain(ActionEvent event) throws IOException {
