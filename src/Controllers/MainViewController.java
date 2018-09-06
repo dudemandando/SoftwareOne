@@ -53,19 +53,22 @@ public class MainViewController implements Initializable {
 
         if(Inventory.isInteger(partSearchInputText.getText()) == true){
             if(Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())) != null){
-                AlertBox.display("Part Search Error", "WORKED.");
                 searchPartID = Integer.parseInt(partSearchInputText.getText());
+                partFound = true;
+                highlightRowFromSearch();
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+                partFound = false;
             }
         }
 
         if(Inventory.isInteger(partSearchInputText.getText()) == false){
             if(Inventory.findPartByName(partSearchInputText.getText()) != null){
-                AlertBox.display("Part Search Error", "WORKED.");
                 searchPartID = Inventory.findPartByName(partSearchInputText.getText()).getPartID();
+                partFound = true;
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+                partFound = false;
             }
         }
     }
@@ -73,19 +76,48 @@ public class MainViewController implements Initializable {
     @ FXML protected void productSearchMain(ActionEvent event){
         if(Inventory.isInteger(productSearchInputText.getText()) == true){
             if(Inventory.findProductByID(Integer.parseInt(productSearchInputText.getText())) != null){
-                AlertBox.display("Product Search Error", "WORKED.");
                 searchProductID = Integer.parseInt(productSearchInputText.getText());
+                productFound = true;
+                highlightRowFromSearch();
             }else{
                 AlertBox.display("Productt Search Error", "Search failed. Please enter new terms to search.");
+                productFound = false;
             }
         }
 
         if(Inventory.isInteger(productSearchInputText.getText()) == false){
             if(Inventory.findProductByName(productSearchInputText.getText()) != null){
-                AlertBox.display("Part Search Error", "WORKED.");
                 searchProductID = Inventory.findProductByName(productSearchInputText.getText()).getProductID();
+                productFound = true;
+                highlightRowFromSearch();
             }else{
                 AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+                productFound = false;
+            }
+        }
+    }
+
+    private void highlightRowFromSearch(){
+        partTable.getSelectionModel().select(0);
+        if(partFound == true){
+            for(int i = 0; i < partTable.getItems().size(); i++){
+
+                Part partHightlight = ((Part) partTable.getItems().get(i));
+                if(searchPartID == partHightlight.getPartID()){
+                    partTable.getSelectionModel().select(i);
+                }
+
+            }
+        }
+        
+        if(productFound == true){
+            for(int i = 0; i < productTable.getItems().size(); i++){
+
+                Product productHightlight = ((Product) productTable.getItems().get(i));
+                if(searchProductID == productHightlight.getProductID()){
+                    productTable.getSelectionModel().select(i);
+                }
+
             }
         }
     }
