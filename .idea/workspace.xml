@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controllers/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AddProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/MainViewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/MainViewController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/ModifyProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ModifyProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/addProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/addProduct.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/modifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/modifyProduct.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,53 +60,12 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="AddProductController.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Controllers/AddProductController.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="238">
-                    <caret line="173" column="26" selection-start-line="173" selection-start-column="26" selection-end-line="173" selection-end-column="26" />
-                    <folding>
-                      <element signature="method#populatePartTable#0;class#AddProductController#0" />
-                      <element signature="method#createProduct#0;class#AddProductController#0" />
-                      <element signature="method#validateFields#0;class#AddProductController#0" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-    <window id="2">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="ModifyProductController.java" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyProductController.java">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="85">
-                    <caret line="167" column="26" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="26" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainViewController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/MainViewController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="199">
@@ -151,6 +105,15 @@
           <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
+      <file leaf-file-name="ModifyProductController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyProductController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="181" column="99" selection-start-line="181" selection-start-column="99" selection-end-line="181" selection-end-column="99" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="mainView.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Views/mainView.fxml">
           <provider selected="true" editor-type-id="text-editor">
@@ -173,8 +136,8 @@
       <file leaf-file-name="ModifyPartViewController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyPartViewController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1207">
-              <caret line="114" column="9" selection-start-line="110" selection-start-column="8" selection-end-line="114" selection-end-column="9" />
+            <state relative-caret-position="522">
+              <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#modifyPartSave#0;class#ModifyPartViewController#0" />
@@ -232,8 +195,8 @@
       <find>populatin</find>
       <find>isOutSourced</find>
       <find>search</find>
-      <find>bo</find>
       <find>boom</find>
+      <find>bo</find>
     </findStrings>
     <replaceStrings>
       <replace>part</replace>
@@ -508,12 +471,12 @@
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.525" side_tool="true" visible="true" weight="0.24945533" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.475" visible="true" weight="0.24945533" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.475" visible="true" weight="0.24945533" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1265625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.1265625" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Learn" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -579,14 +542,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Controllers/ModifyProductController.java</url>
-          <line>175</line>
-          <properties />
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="14" />
     </breakpoint-manager>
   </component>
@@ -895,19 +850,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyPartViewController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1207">
-          <caret line="114" column="9" selection-start-line="110" selection-start-column="8" selection-end-line="114" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#modifyPartSave#0;class#ModifyPartViewController#0" />
-            <element signature="method#initialize#0;class#ModifyPartViewController#0" />
-            <element signature="method#validateFields#0;class#ModifyPartViewController#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/mainView.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
@@ -969,10 +911,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyPartViewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="105" lean-forward="true" selection-start-line="105" selection-end-line="105" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#modifyPartSave#0;class#ModifyPartViewController#0" />
+            <element signature="method#initialize#0;class#ModifyPartViewController#0" />
+            <element signature="method#validateFields#0;class#ModifyPartViewController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/ModifyProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="167" column="26" selection-start-line="167" selection-start-column="26" selection-end-line="167" selection-end-column="26" />
+        <state relative-caret-position="425">
+          <caret line="181" column="99" selection-start-line="181" selection-start-column="99" selection-end-line="181" selection-end-column="99" />
         </state>
       </provider>
     </entry>

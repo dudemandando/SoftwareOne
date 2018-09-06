@@ -180,7 +180,6 @@ public class ModifyProductController implements Initializable {
         if(Inventory.isInteger(partSearchInputText.getText()) == false){
             if(Inventory.findPartByName(partSearchInputText.getText()) != null){
                 searchPartID = Inventory.findPartByName(partSearchInputText.getText()).getPartID();
-                System.out.println(Inventory.findPartByName(partSearchInputText.getText()).getName());
                 partFound = true;
                 highlightRowFromSearch();
             }else{
