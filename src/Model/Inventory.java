@@ -115,7 +115,6 @@ public class Inventory {
         for (Part part : allParts) {
 
             if (name.equalsIgnoreCase(part.getName())){
-                System.out.println("boom");
                 return part;
             }
         }

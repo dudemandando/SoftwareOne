@@ -29,8 +29,8 @@
       <Label layoutX="325.0" layoutY="400.0" text="Min" />
 
       <!-- Search Area -->
-      <TextField layoutX="766.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" />
-      <Button  layoutX="608.0" layoutY="97.0" mnemonicParsing="false" text="Search" />
+      <TextField fx:id="partSearchInputText" layoutX="766.0" layoutY="97.0" prefHeight="30.0" prefWidth="200.0" />
+      <Button onAction="#searchAddProduct" layoutX="608.0" layoutY="97.0" mnemonicParsing="false" text="Search" />
 
       <!-- Top Table -->
       <TableView fx:id="allPartsTable" layoutX="611.0" layoutY="185.0" prefHeight="200.0" prefWidth="600.0">

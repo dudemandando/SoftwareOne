@@ -54,6 +54,10 @@ public class AddProductController implements Initializable {
     @FXML
     private AnchorPane rootPane;
 
+    @FXML private TextField partSearchInputText;
+    private int searchPartID;
+    private boolean partFound = false;
+
     @FXML
     protected void addPart(ActionEvent event) throws IOException{
         productToAdd.addAssociatedPart(((Part) allPartsTable.getSelectionModel().getSelectedItem()).getPartID());
@@ -94,11 +98,6 @@ public class AddProductController implements Initializable {
             rootPane.getChildren().setAll(pane);
         }
 
-    }
-
-    @FXML
-    protected void searchAddProduct(ActionEvent event){
-        System.out.println(" search add product");
     }
 
     @Override
@@ -168,6 +167,54 @@ public class AddProductController implements Initializable {
                 }
 
             }
+        }
+    }
+
+    @FXML protected void searchAddProduct(ActionEvent event){
+        partFound = false;
+        if(Inventory.isInteger(partSearchInputText.getText()) == true){
+            if(Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())) != null){
+                searchPartID = Integer.parseInt(partSearchInputText.getText());
+                partFound = true;
+                highlightRowFromSearch();
+            }else{
+                AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+                partFound = false;
+            }
+        }
+
+        if(Inventory.isInteger(partSearchInputText.getText()) == false){
+            if(Inventory.findPartByName(partSearchInputText.getText()) != null){
+                searchPartID = Inventory.findPartByName(partSearchInputText.getText()).getPartID();
+                partFound = true;
+                highlightRowFromSearch();
+            }else{
+                AlertBox.display("Part Search Error", "Search failed. Please enter new terms to search.");
+                partFound = false;
+            }
+        }
+    }
+
+    private void highlightRowFromSearch(){
+        if(partFound == true){
+            for(int i = 0; i < allPartsTable.getItems().size(); i++){
+
+                Part allPartHightlight = ((Part) allPartsTable.getItems().get(i));
+
+                if(searchPartID == allPartHightlight.getPartID()){
+                    allPartsTable.getSelectionModel().select(i);
+                }
+
+            }
+            if(productPartsTable.getItems().size() > 0){
+                for(int x = 0; x <productPartsTable.getItems().size(); x++){
+                    Part addedPartHighlight = (Part) productPartsTable.getItems().get(x);
+                    if(searchPartID == addedPartHighlight.getPartID()){
+                        productPartsTable.getSelectionModel().select(x);
+                    }
+                }
+            }
+
         }
     }
 }

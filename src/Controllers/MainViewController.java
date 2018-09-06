@@ -50,7 +50,7 @@ public class MainViewController implements Initializable {
     private Button exit;
 
     @FXML protected void partSearchMain(ActionEvent event){
-
+        partFound = false;
         if(Inventory.isInteger(partSearchInputText.getText()) == true){
             if(Inventory.findPartByID(Integer.parseInt(partSearchInputText.getText())) != null){
                 searchPartID = Integer.parseInt(partSearchInputText.getText());
@@ -74,6 +74,7 @@ public class MainViewController implements Initializable {
     }
 
     @ FXML protected void productSearchMain(ActionEvent event){
+        productFound = false;
         if(Inventory.isInteger(productSearchInputText.getText()) == true){
             if(Inventory.findProductByID(Integer.parseInt(productSearchInputText.getText())) != null){
                 searchProductID = Integer.parseInt(productSearchInputText.getText());
@@ -98,7 +99,6 @@ public class MainViewController implements Initializable {
     }
 
     private void highlightRowFromSearch(){
-        partTable.getSelectionModel().select(0);
         if(partFound == true){
             for(int i = 0; i < partTable.getItems().size(); i++){
 
@@ -109,7 +109,7 @@ public class MainViewController implements Initializable {
 
             }
         }
-        
+
         if(productFound == true){
             for(int i = 0; i < productTable.getItems().size(); i++){
 
